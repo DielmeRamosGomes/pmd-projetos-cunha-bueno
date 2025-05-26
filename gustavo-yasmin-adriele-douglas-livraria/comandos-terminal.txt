@@ -1,9 +1,9 @@
-criar um rep-local esses comandos você vai colocar apenas uma vez quando inicializar o rep
+criar um rep-local esses comandos você vai colocar apenas uma vez quando inicializar o rep-local
 git init
 git config --global user.name "seu-nome-de-usuario-do-git"
 git config --global user.email "seu-email-de-usuario-do-git"
 git branch -M main
-git remote add origin url-da-nuvem
+git clone https://github.com/DielmeRamosGomes/pmd-projetos-cunha-bueno.git
 
 ATENÇÃO sempre antes de codificar dar o comando 
 git pull origin main
