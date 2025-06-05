@@ -3,7 +3,7 @@
 $servidor = "localhost";  // normalmente localhost no XAMPP
 $usuario = "root";         // usuário padrão do MySQL no XAMPP é root
 $senha = "";               // senha padrão é vazia (sem senha)
-$banco = "livraria";       // nome do seu banco de dados
+$banco = "livraria_web";       // nome do seu banco de dados
 
 // Criar a conexão
 $conn = new mysqli($servidor, $usuario, $senha, $banco);
