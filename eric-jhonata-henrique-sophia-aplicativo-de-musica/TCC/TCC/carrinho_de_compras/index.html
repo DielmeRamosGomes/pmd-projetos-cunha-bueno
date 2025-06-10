@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>home</title>
+</head>
+<body style="background-image:url(img/ceu.jpg);" >
+  <center>
+    <!--esse table cria uma tabela, os tr se eu não me engano são divisões e o td sao partes dentro delas
+    são usada para fazer as imagens ao lado do texto sem usar um arquivo css-->
+<table>
+  <tr>
+  <td><img src="img/banner.jpg" width="400"></td>
+<td>
+  <center>
+    <form id="meuFormulario">
+        <h1 style="font-size: 40px;"> nessa parte você pode se cadastrar ou apenas fazer login</h1>
+     <p style="font-size: 20px;">insira seu nome</p>
+     <input type="text" name="name" placeholder="pei" id="inputnome" required>
+     <p style="font-size: 20px;">insira seu email</p>
+     <input type="text" name="email" placeholder="ayumukasuga@gmail.com" id="inputemail" required>
+     <p style="font-size: 20px;">insira sua senha</p>
+     <input type="password" name="senha" id="senha" required>
+     <p style="font-size: 20px;">insira seu endereço</p>
+     <input type="text" name="local" placeholder="Osaka" id="inputlocal" required>
+    </form>
+    <a href='compras.html'><button id="botao1">Link para as compras</button></a>
+  </center>
+ </td>
+ <td><img src="img/banner.jpg" width="400"></td>
+  </tr>
+</table>
+</center>
+    <script>
+    //desabilita o botão no início
+document.getElementById("botao1").disabled = true;
+
+//cria um event listener que escuta mudanças no input
+
+addEventListener("input", function(event){
+
+  //busca conteúdo do input
+    var nome = document.getElementById("inputnome").value;
+    var conteudoemail = document.getElementById("inputemail").value;
+    var senha = document.getElementById("senha").value;
+    var local = document.getElementById("inputlocal").value;
+    //valida conteudo do input 
+    if (nome !== null && nome !== '' && conteudoemail !== null && conteudoemail !== '' && senha !== null && senha !== '' && local !== null && local !== '') {
+      //habilita o botão
+      document.getElementById("botao1").disabled = false;
+    } else {
+      //desabilita o botão se o conteúdo do input ficar em branco
+      document.getElementById("botao1").disabled = true;
+    }
+});
+      </script>
+</body>
+</html>

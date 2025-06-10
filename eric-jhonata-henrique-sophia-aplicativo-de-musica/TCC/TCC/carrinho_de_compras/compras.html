@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrinho de Compras</title>
+
+
+    <link rel="stylesheet" href="css/estilo.css">
+
+
+
+</head>
+<body>
+
+    <!--carinho de compras-->
+    <div class="container">
+        <h1>Loja Virtual</h1>
+                    <div class="carrinho">
+            <h2>Carrinho de Compras</h2>
+            <ul class="itens-carrinho"></ul>
+            <div class="total">Total: R$ <span>0.00</span></div>
+            <button class="finalizar">Finalizar Compra</button>
+        </div>
+    </div>
+
+        <!--área de produtos, perceba a diferença entre div class produto e produtos-->
+        <div class="produto">
+            <div class="produto" data-id="1" data-nome="plushie sakaki" data-preco="49.90">
+            <img src="img/sakaki.jfif" class="imagem">
+                <h3>plushie sakaki</h3>
+                <p>R$ 49,90</p>
+                <button class="adicionar"onclick="new Audio('audio/sata.mp3').play()">Adicionar ao Carrinho</button>
+            </div>
+        </div>
+            <div class="produto">
+            <div class="produto" data-id="2" data-nome="plushie osaka" data-preco="999.99">
+            <img src="img/osaka.jfif" class="imagem">
+                <h3>plushie osaka</h3>
+                <p>R$ 999,99</p>
+                <button class="adicionar" onclick="new Audio('audio/sata.mp3').play()">Adicionar ao Carrinho</button>
+            </div>
+        </div>
+            <div class="produto">
+                <div class="produto" data-id="3" data-nome="plushie chiyo" data-preco="49.90">
+                <img src="img/chiyo.jfif" class="imagem">
+                    <h3>chiyo</h3>
+                    <p>R$ 49,90</p>
+                    <button class="adicionar" onclick="new Audio('audio/sata.mp3').play()">Adicionar ao Carrinho</button>
+                </div>
+            </div>
+                <div class="produto">
+                    <div class="produto" data-id="4" data-nome="plushie tomo" data-preco="49.90">
+                    <img src="img/tomo.jpg" class="imagem">
+                        <h3>plushie tomo</h3>
+                        <p>R$ 49,90</p>
+                        <button class="adicionar" onclick="new Audio('audio/sata.mp3').play()">Adicionar ao Carrinho</button>
+                    </div>
+                    <div class="produto">
+                        <div class="produto" data-id="5" data-nome="plushie yomi" data-preco="49.90">
+                        <img src="img/yomi.jfif" class="imagem">
+                            <h3>plushie yomi</h3>
+                            <p>R$ 49,90</p>
+                            <button class="adicionar" onclick="new Audio('audio/sata.mp3').play()">Adicionar ao Carrinho</button>
+                        </div>
+                    </div>
+
+                        <div class="produto" data-id="6" data-nome="plushie kagura" data-preco="49.90">
+                            <img src="img/kagura.jpg" class="imagem">
+                                <h3>plushie kagura</h3>
+                                <p>R$ 49,90</p>
+                                <button class="adicionar"onclick="new Audio('audio/sata.mp3').play()">Adicionar ao Carrinho</button>
+                            </div>
+                        </div>
+            
+       
+<!--prograação do carrinho-->
+    <script src="js/script.js"></script>
+</body>
+</html>
