@@ -1,0 +1,88 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-image:url('../img/papel.jpg');
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 20px;
+}
+
+.produtos {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 15px;
+}
+
+.produto {
+    background: white;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.produto button {
+    background: #4CAF50;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 3px;
+    cursor: pointer;
+    width: 100%;
+}
+.produto button:hover {
+    background: #6bff70;
+    color: rgb(255, 219, 219);
+    border: solid 2px black;
+    padding: 8px 12px;
+    border-radius: 3px;
+    cursor: pointer;
+    width: 100%;
+    box-shadow: black;
+}
+
+.carrinho {
+    background: white;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 20px;
+}
+
+.itens-carrinho {
+    list-style: none;
+    padding: 0;
+    margin: 15px 0;
+}
+
+.itens-carrinho li {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.total {
+    font-weight: bold;
+    font-size: 1.2em;
+    margin: 15px 0;
+}
+
+.finalizar {
+    background: #2196F3;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 3px;
+    cursor: pointer;
+    width: 100%;
+}
+.imagem{
+    max-width: 200px;
+}
