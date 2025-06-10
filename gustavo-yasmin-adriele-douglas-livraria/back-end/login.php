@@ -2,7 +2,7 @@
 session_start();
 
 // Conexão com o banco de dados
-$conn = new mysqli("localhost", "root", "", "livraria");
+$conn = new mysqli("localhost", "root", "", "livraria_web");
 
 if ($conn->connect_error) {
     die("Erro na conexão: " . $conn->connect_error);
