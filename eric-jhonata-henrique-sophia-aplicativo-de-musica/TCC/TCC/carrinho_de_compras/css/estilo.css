@@ -86,3 +86,11 @@ body {
 .imagem{
     max-width: 200px;
 }
+
+.titulo{
+    font-family: initial;
+    color: #fb2f1b;
+    background-color:#f7d302;
+    height: 50px;
+    width: 190px;
+}
