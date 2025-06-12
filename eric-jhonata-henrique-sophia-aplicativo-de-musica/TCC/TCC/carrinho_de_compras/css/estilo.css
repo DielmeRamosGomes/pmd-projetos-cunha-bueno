@@ -88,9 +88,11 @@ body {
 }
 
 .titulo{
-    font-family: initial;
-    color: #fb2f1b;
-    background-color:#f7d302;
-    height: 50px;
-    width: 190px;
-}
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color:  #f7d302;
+    background-color:#fb2f1b;
+    height: 45px;
+    width: 150px;
+
+    
+}  
