@@ -2,7 +2,7 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 20px;
-    background-image:url('../img/papel.jpg');
+    background-image:url('../img/background.jfif');
 }
 
 .container {
@@ -86,3 +86,13 @@ body {
 .imagem{
     max-width: 200px;
 }
+
+.titulo{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color:  #f7d302;
+    background-color:#fb2f1b;
+    height: 45px;
+    width: 150px;
+
+    
+}  
