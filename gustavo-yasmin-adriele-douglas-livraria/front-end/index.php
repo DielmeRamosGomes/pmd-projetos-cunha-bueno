@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -15,8 +19,13 @@
             <input type="text" name="search" placeholder="Digite o nome do livro..." />
             <button type="submit">Pesquisar</button>
 
-            <a href="LOGIN.html" class="botao-login">Entrar / Cadastrar-se</a>
         </form>
+           <?php if (isset($_SESSION['usuario_nome'])): ?>
+    <span>Olá, <?php echo htmlspecialchars($_SESSION['usuario_nome']); ?>!</span>
+<?php else: ?>
+    <a href="login/Login.html" class="botao-login">Entrar / Cadastrar-se</a>
+<?php endif; ?>
+
    </header>
 
    <main>
@@ -25,7 +34,9 @@
             <div class="livro">
                 <img src="img/Capa-O-Sol-e-a-Estrela-1.jpg" alt="O Sol e a Estrela">
                 <div>
-                    <h2>O Sol e a Estrela</h2>
+                    <h2>O Sol e a Estrela </h2>
+                    <p>rick riordan</p>
+                    <p>Gênero/categoria: Fantasia e Ficção Científica, Infantojuvenil</p>
                     <p>Os semideuses Nico e Will enfrentam uma
                          jornada perigosa pelo Tártaro.</p>
                     <p><strong>R$ 69,90</strong></p>
@@ -37,27 +48,26 @@
                 <img src="img/CALICE DOS DEUSES.jpg" alt="O Cálice dos Deuses - Vol. 1">
                 <div>
                     <h2>O Cálice dos Deuses - Vol. 1</h2>
-                    <p>Depois de salvar o mundo inúmeras vezes de monstros, Percy Jackson recebe uma nova missão: recuperar um cálice divino antes que caia em mãos erradas.</p>
+                    <p>rick riordan</p>
+                    <p>Gênero/categoria: Fantasia e Ficção Científica, Infantojuvenil</p>
+                    <p>Depois de salvar o mundo inúmeras vezes de monstros, Percy Jackson 
+                        recebe uma nova missão: recuperar um cálice divino antes que caia em mãos erradas.</p>
                     <p><strong>R$ 59,90</strong></p>
                     <a href="produto.html">Comprar</a>
                 </div>
+
             </div>
-
-            div class="livro">
-            <img src="img/uma estranha em casa.jpg" alt="uma  estrenha em casa">
-            <div>
-                <h2>uma  estranha em casa</h2>
-                <p>autora:shari lapena</p>
-
-                <p>Suspense da mesma autora de O casal que mora ao lado. Uma vida da qual você não 
-                    se lembra. Um passado do qual você não consegue escapar. Karen Krupp acorda no hospital, 
-                    sem ter a menor ideia de como foi parar lá. Tom, seu marido, diz que a porta estava 
-                    destrancada quando ele entrou em casa, as luzes, acesas, e que a esposa provavelmente
-                     saiu às pressas quando estava preparando o jantar. Karen perdeu o controle do carro
-                      enquanto dirigia a toda a
-                     velocidade e bateu de frente em um poste.</p>
-                <p><strong>R$64,90</strong></p>
-                <a href="produto.html">Comprar</a>
+            <div class="livro">
+                <img src="img/mulher no escuro.jpg" alt="Uma mulher no escuro">
+                <div>
+                    <h2>Uma mulher no escuro</h2>
+                    <p>autor: Raphael Montes</p>
+                    <p>Gênero / Categoria: Thriller, Suspense</p>
+                    <p>Uma jovem solitária confronta segredos obscuros de seu passado após um crime brutal mudar 
+                        sua vida para sempre.</p>
+                    <p><strong>R$ 52,90</strong></p>
+                    <a href="produto3.html">Comprar</a>
+                </div>
             </div>
         </section>
     </DIV>
