@@ -1,5 +1,6 @@
 CREATE DATABASE livraria_web;
 
+USE livraria_web;
 CREATE TABLE usuarios (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(100) NOT NULL,
@@ -29,7 +30,7 @@ VALUES(69.90,'sol e as estrelas',' Fantasia e Ficção Científica, Infantojuven
 
 
 INSERT INTO usuarios (nome, email, senha, tipo_usuario)
-VALUES ('João da Silva', 'joao@email.com', '512346', 'cliente');
+VALUES ('jose de lima', 'joao@email.com', '512346', 'cliente');
  
 
 INSERT INTO USUARIOS (nome, email, senha, tipo_usuario)
