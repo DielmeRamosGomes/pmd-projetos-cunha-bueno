@@ -100,15 +100,14 @@ body {
 #botaocadastro{
     background-color: black;
     color: white;
-    border: 1px solid transparent;
-    border-radius: 20%;
+    border: 5px solid transparent;
+    border-radius: 40%;
     padding: 10px;
     transition: border-color 0.25s;
 }
 #botaocadastro:hover{
     transition: border-color 0.25s;
-    background-color: yellow;
-    color: black;
+    border-color: yellow;
     cursor: pointer;
 }
 #botaocadastro:focus,
