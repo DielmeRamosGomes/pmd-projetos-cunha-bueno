@@ -108,6 +108,7 @@ body {
 #botaocadastro:hover{
     transition: border-color 0.25s;
     background-color: yellow;
+    color: black;
     cursor: pointer;
 }
 #botaocadastro:focus,
