@@ -105,7 +105,7 @@ body {
     padding: 10px;
     transition: border-color 0.25s;
 }
-#botaocadastro :hover{
+#botaocadastro:hover{
     transition: border-color 0.25s;
     background-color: yellow;
     cursor: pointer;
