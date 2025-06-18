@@ -97,6 +97,20 @@ body {
     
 }  
 
-.box{
-    
+#botaocadastro{
+    background-color: black;
+    color: white;
+    border: 1px solid transparent;
+    border-radius: 20%;
+    padding: 10px;
+    transition: border-color 0.25s;
+}
+#botaocadastro :hover{
+    transition: border-color 0.25s;
+    background-color: yellow;
+    cursor: pointer;
+}
+#botaocadastro:focus,
+#botaocadastro:focus-visible{
+    outline: 4px auto -webkit -focus -ring-color;
 }
