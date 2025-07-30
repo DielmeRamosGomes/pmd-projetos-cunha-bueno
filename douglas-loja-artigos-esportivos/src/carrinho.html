@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DG - Catálogo - Carrinho</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>DG - Catálogo</h1>
+  </header>
+  <nav>
+    <a href="index.html">Início</a>
+    <a href="index.html#catalogo">Catálogo</a>
+    <a href="carrinho.html">Carrinho</a>
+    <a href="contato.html">Contato</a>
+  </nav>
+  
+  <section class="carrinho-section">
+    <div class="container">
+      <h2>Meu Carrinho</h2>
+      
+      <div id="carrinho-vazio" class="carrinho-vazio">
+        <div class="carrinho-vazio-content">
+          <h3>🛒 Seu carrinho está vazio</h3>
+          <p>Adicione produtos do nosso catálogo para começar suas compras!</p>
+          <a href="index.html#catalogo" class="btn-voltar">Ver Produtos</a>
+        </div>
+      </div>
+      
+      <div id="carrinho-items" class="carrinho-items" style="display: none;">
+        <div class="carrinho-header">
+          <div class="header-item">Produto</div>
+          <div class="header-preco">Preço</div>
+          <div class="header-quantidade">Quantidade</div>
+          <div class="header-total">Total</div>
+          <div class="header-acao">Ação</div>
+        </div>
+        
+        <div id="lista-produtos" class="lista-produtos">
+          <!-- Produtos serão inseridos aqui via JavaScript -->
+        </div>
+        
+        <div class="carrinho-resumo">
+          <div class="resumo-content">
+            <div class="total-geral">
+              <strong>Total Geral: <span id="total-geral">R$ 0,00</span></strong>
+            </div>
+            <div class="carrinho-acoes">
+              <button id="limpar-carrinho" class="btn-limpar">Limpar Carrinho</button>
+              <button id="finalizar-compra" class="btn-finalizar">Finalizar Compra</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <footer>
+    <p>© VEM NA MELHOR LOJA!!</p>
+  </footer>
+  
+  <script src="script.js"></script>
+</body>
+</html>
+
