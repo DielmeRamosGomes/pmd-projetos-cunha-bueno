@@ -112,50 +112,54 @@
   </style>
 </head>
 <body>
+<form action="submit.php" method="post">
   <div class="container">
     <table>
       <tr>
-        <td><img src="img/osakatime3.jpg" alt="Banner esquerdo"></td>
+        
         <td>
+          <h1>🌸 Plushie Store 🌸</h1>
+          <p>Insira seu nome:</p>
+          <input type="text" name="name" placeholder="pei" id="inputnome" required>
+
+          <p>Insira seu email:</p>
+          <input type="text" name="email" placeholder="ayumukasuga@gmail.com" id="inputemail" required>
+
+          <p>Insira sua senha:</p>
+          <input type="password" name="senha" id="senha" required>
+
+          <p>Insira seu endereço:</p>
+          <input type="text" name="endereco" placeholder="Osaka" id="inputlocal" required>
+
+          <br>
+<a href="compras.html">
+          <button id="botao1" type="submit" disabled>✨ Enviar ✨</button>
+</a>
+        </td>
+
       </tr>
-      <form action="submit.php" method="post">
-        <h1>🌸 Plushie Store 🌸</h1>
-        <p>Insira seu nome:</p>
-        <input type="text" name="name" placeholder="pei" id="inputnome" required>
 
-        <p>Insira seu email:</p>
-        <input type="text" name="email" placeholder="ayumukasuga@gmail.com" id="inputemail" required>
-
-        <p>Insira sua senha:</p>
-        <input type="password" name="senha" id="senha" required>
-
-        <p>Insira seu endereço:</p>
-        <input type="text" name="local" placeholder="Osaka" id="inputlocal" required>
-
-        <br>
-        <a href="compras.html">
-          <button id="botao1" type="button" disabled>✨ Link para as Compras ✨</button>
-        </a>
-      </form>
-      </td>
     </table>
+<img src="img/osakatime3.jpg" alt="Banner esquerdo">
   </div>
+</form>
 
-  <script>
-    document.getElementById("botao1").disabled = true;
+<script>
+  document.getElementById("botao1").disabled = true;
 
-    addEventListener("input", function () {
-      var nome = document.getElementById("inputnome").value;
-      var conteudoemail = document.getElementById("inputemail").value;
-      var senha = document.getElementById("senha").value;
-      var local = document.getElementById("inputlocal").value;
+  addEventListener("input", function () {
+    var nome = document.getElementById("inputnome").value;
+    var conteudoemail = document.getElementById("inputemail").value;
+    var senha = document.getElementById("senha").value;
+    var local = document.getElementById("inputlocal").value;
 
-      if (nome && conteudoemail && senha && local) {
-        document.getElementById("botao1").disabled = false;
-      } else {
-        document.getElementById("botao1").disabled = true;
-      }
-    });
-  </script>
+    if (nome && conteudoemail && senha && local) {
+      document.getElementById("botao1").disabled = false;
+    } else {
+      document.getElementById("botao1").disabled = true;
+    }
+  });
+</script>
+
 </body>
 </html>

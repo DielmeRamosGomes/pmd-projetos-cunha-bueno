@@ -20,15 +20,18 @@ $senha = $_POST['senha'];
 $endereco = $_POST['endereco'];
 
 // Insert into database
-$sql = "INSERT INTO users (name, email, senha, endereco) VALUES (?, ?, ?, ?)";
+$sql = "INSERT INTO usuarios (name, email, senha, endereco) VALUES (?, ?, ?, ?)";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("ssss", $name, $email, $senha, $endereco);
 
 if ($stmt->execute()) {
+header("Location: compras.html");
+exit();
     echo "Arigato, $name! seus dados são nossos agora.";
 } else {
     echo "Error: " . $stmt->error;
 }
+
 
 $stmt->close();
 $conn->close();
