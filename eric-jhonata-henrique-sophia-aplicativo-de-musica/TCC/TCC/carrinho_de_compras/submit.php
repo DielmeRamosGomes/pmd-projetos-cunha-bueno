@@ -36,3 +36,4 @@ exit();
 $stmt->close();
 $conn->close();
 ?>
+ok
