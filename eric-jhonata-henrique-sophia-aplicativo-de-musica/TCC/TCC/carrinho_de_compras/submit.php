@@ -20,7 +20,7 @@ $senha = $_POST['senha'];
 
 
 // Insert into database
-$sql = "INSERT INTO usuarios (name, email, senha ) VALUES (?, ?, ?, )";
+$sql = "INSERT INTO usuarios (name, email, senha ) VALUES (?, ?, ?)";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("sss", $name, $email, $senha );
 
