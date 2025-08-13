@@ -17,12 +17,12 @@ if ($conn->connect_error) {
 $name = $_POST['name'];
 $email = $_POST['email'];
 $senha = $_POST['senha'];
-$endereco = $_POST['endereco'];
+
 
 // Insert into database
-$sql = "INSERT INTO usuarios (name, email, senha, endereco) VALUES (?, ?, ?, ?)";
+$sql = "INSERT INTO usuarios (name, email, senha ) VALUES (?, ?, ?, )";
 $stmt = $conn->prepare($sql);
-$stmt->bind_param("ssss", $name, $email, $senha, $endereco);
+$stmt->bind_param("sss", $name, $email, $senha );
 
 if ($stmt->execute()) {
 header("Location: compras.html");

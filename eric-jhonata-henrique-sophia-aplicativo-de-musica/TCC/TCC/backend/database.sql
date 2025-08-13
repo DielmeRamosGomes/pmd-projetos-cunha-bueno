@@ -9,3 +9,6 @@ CREATE TABLE users (
     senha varchar(255),
     endereco varchar(255)
 );
+
+alter table usuarios
+drop column endereco;
