@@ -25,7 +25,7 @@ $stmt = $conn->prepare($sql);
 $stmt->bind_param("sss", $name, $email, $senha );
 
 if ($stmt->execute()) {
-header("Location: compras.html");
+header("Location: index.html");
 exit();
     echo "Arigato, $name! seus dados são nossos agora.";
 } else {
