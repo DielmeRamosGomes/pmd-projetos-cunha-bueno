@@ -1,64 +1,171 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>home</title>
+    <title>Carrinho de Compras</title>
+
+
+    <link rel="stylesheet" href="css/estilo.css">
+    <a href='cadastro.html'><button id="botaocadastro">cadastrar</button></a>
 </head>
-<body style="background-image:url(img/ceu.jpg);" >
-  <center>
-    <!--esse table cria uma tabela, os tr se eu não me engano são divisões e o td sao partes dentro delas
-    são usada para fazer as imagens ao lado do texto sem usar um arquivo css-->
-<table>
-  <tr>
-  <td><img src="img/banner.jpg" width="400"></td>
-<td>
-<center>
-    <form id="meuFormulario">
-        <h1 style="font-size: 40px;">BEM VINDO A LOJA DO AZUMA</h1>
-     <p style="font-size: 20px;">insira seu nome</p>
-     <input type="text" name="name" placeholder="pei" id="inputnome" required>
-     <p style="font-size: 20px;">insira seu email</p>
-     <input type="text" name="email" placeholder="ayumukasuga@gmail.com" id="inputemail" required>
-     <p style="font-size: 20px;">insira sua senha</p>
-     <input type="password" name="senha" id="senha" required>
-     <p style="font-size: 20px;">insira seu endereço</p>
-     <input type="text" name="local" placeholder="Osaka" id="inputlocal" required>
-    </form>
-    <a href='compras.html'><button id="botao1">Link para as compras</button></a>
+<body>
+<div class="box">
+<img src="img/logo-removebg-preview.png" width="350" height="300">
+</div>
+    <!--carinho de compras-->
+    <div class="container">
+       
+                    <div class="carrinho">
+            <h2>Carrinho de Compras</h2>
+            <ul class="itens-carrinho"></ul>
+            <div class="total">Total: R$ <span>0.00</span></div>
+            <button class="finalizar">Finalizar Compra</button>
+        </div>
+    </div>
 
-<img src="img/osakatime3.jpg/" class="imagem">
+        <!--área de produtos, perceba a diferença entre div class produto e produtos-->
+       
+            <div class="produto">
+            <div class="produto" data-id="2" data-nome="plushie osaka" data-preco="200.00">
+                <table>
+                    <tr>
+                        <td>
+            <img src="img/osaka.jfif" class="imagem">
+        </td>
+        <td> <h3>Essa é a goat, Ayumu "Osaka" Kasuga, literalmente definiu todos os animes bobos modernos. Sua personagem intrigante
+            sempre é o foco da atenção quando ela esta em cena, sua atitude boa sempre tras sorrizos a quem a vê. <br>
+            ela sempre sera uma gema preciosa e seu impacto na cultura da internet é inestimavel, e seu retorno no mais recente capitulo de <br>
+            yotsubato marca o retorno de uma era para fans de anime e manga pelo mundo todo<br>
+            ela obviamente é a personagem principal do programa. Ela é a mais marcante personagem ja criada de todos.<br>
+            esse monumento erguido em seu nome mede 20 cm
+        </h3></td>
+                <h2>Plushie Osaka</h2>
+                <p>R$ 200,00</p>
+            </tr>
+            </table>
+                <button class="adicionar" onclick="new Audio('audio/sata.mp3').play()">Adicionar ao Carrinho</button>
+            </div>
+        </div>
+         <div class="produto">
+            <div class="produto" data-id="1" data-nome="plushie sakaki" data-preco="100.00">
+                <table>
+                    <tr>
+                        <td>
+            <img src="img/sakaki.jfif" class="imagem">
+        </td>
+        <td>
+            <h3>Essa é a Sakaki, a menina quieta que é considerada a mais legal da escola, Mas por dentro ela é um amor de pessoa que ama animais.<br>
+                Esse plushie feito de algodão tem 25 centimetros de altura e tem altissima qualidade.</h3>
+        </td>
+                <h2>Plushie Sakaki</h2>
+                <p>R$ 100,00</p>
+            </tr>
+            </table>
+                <button class="adicionar"onclick="new Audio('audio/sata.mp3').play()">Adicionar ao Carrinho</button>
+            </div>
+        </div>
+            <div class="produto">
+                <div class="produto" data-id="3" data-nome="plushie chiyo" data-preco="79.90">
+                    <table>
+                        <tr>
+                            <td>
+                <img src="img/chiyochan.jpg" class="imagem">
+                </td>
+                <td><h3>Essa baixinha aqui é a Chiyo. Ela so sabe de estudar, esse plushie mede 15 cm ( seu tamanho real )</h3></td>
+                    <h2>chiyo</h2>
+                    <p>R$ 79,90</p>
+                    </tr>
+                </table>
+                    <button class="adicionar" onclick="new Audio('audio/sata.mp3').play()">Adicionar ao Carrinho</button>
+                </div>
+            </div>
+                <div class="produto">
+                    <div class="produto" data-id="4" data-nome="plushie tomo" data-preco="89.90">
+                        <table>
+                            <tr>
+                                <td>
+                    <img src="img/tomo.jpg" class="imagem">
+                    </td>
+                    <td><h3>Essa é a Tomo, ela a a garota bagunceira da escola, ela pode não ser a mais esperta, atletica, confiavel, responsavel, mentalmente estável ou segura de se estar por perto mas ela definitivamente é a vida da festa.<br>
+                    a tomo sempre esta la pra alegrar (ou destruir) a tudo e todos, é como um canhão frouxo. Ela se considera melhor amiga da Yomi ja que estudam juntas desde os anos primarios<br>
+                    essa plushie da tomo mede 20 cm </h3></td>
+                        <h2>plushie tomo</h2>
+                        <p>R$ 89,90</p>
+                    </tr>
+                </table>
+                        <button class="adicionar" onclick="new Audio('audio/sata.mp3').play()">Adicionar ao Carrinho</button>
+                    </div>
+                    <div class="produto">
+                        <div class="produto" data-id="5" data-nome="plushie yomi" data-preco="129.90">
+                            <table>
+                                <tr>
+                                    <td>
+                        <img src="img/yomi.jfif" class="imagem">
+                        </td>
+                        <td><h3>Essa é a Yomi, a Yomi é a melhor amiga da Tomo ela gostando ou não, ela é a mais matura do grupo, sempre tentando impor ordem no grupo quando se metem em encrencas. Ela estuda junto da tomo desde os anos primarios. A Yomi esta sempre tentando fazer uma dieta mas sempre falha.<br>
+                        esse plushie mede 21 cm e pesa um pouco mais que os outros por motivos desconhecidos</h3></td>
+                            <h2>Plushie Yomi</h2>
+                            <p>R$ 129,90</p>
+                            </tr>
+                            </table>
+                            <button class="adicionar" onclick="new Audio('audio/sata.mp3').play()">Adicionar ao Carrinho</button>
+                        </div>
+                    </div>
+                        <div class="produto" data-id="6" data-nome="plushie kagura" data-preco="79.90">
+                            <table>
+                                <tr>
+                                    <td>
+                            <img src="img/kagura.jpg" class="imagem">
+                            </td>
+                            <td>
+                                <h3> Essa é a Kagura, a garota esportista da escola. Ela é bem competitiva mas sempre liga para oque suas amigas tem a dizer.<br>
+                                    Esse plushie de algodão é feito com altíssima qualidade e tem 20 centímetros de altura</h3>
+                            </td>
+                                <h2>Plushie Kagura</h2>
+                                <p>R$ 79,90</p>
+                            </tr>
+                        </table>
+                                <button class="adicionar"onclick="new Audio('audio/sata.mp3').play()">Adicionar ao Carrinho</button>
+                            </div>
+                        </div>
 
-  </center>
- </td>
- <td><img src="img/banner.jpg" width="400"></td>
-  </tr>
-</table>
-</center>
-    <script>
-    //desabilita o botão no início
-document.getElementById("botao1").disabled = true;
-
-//cria um event listener que escuta mudanças no input
-
-addEventListener("input", function(event){
-
-  //busca conteúdo do input
-    var nome = document.getElementById("inputnome").value;
-    var conteudoemail = document.getElementById("inputemail").value;
-    var senha = document.getElementById("senha").value;
-    var local = document.getElementById("inputlocal").value;
-    //valida conteudo do input 
-    if (nome !== null && nome !== '' && conteudoemail !== null && conteudoemail !== '' && senha !== null && senha !== '' && local !== null && local !== '') {
-      //habilita o botão
-      document.getElementById("botao1").disabled = false;
-    } else {
-      //desabilita o botão se o conteúdo do input ficar em branco
-      document.getElementById("botao1").disabled = true;
-    }
-});
-      </script>
+                         <div class="produto" data-id="7" data-nome="plushie neco" data-preco="129.90">
+                            <table>
+                                <tr>
+                                    <td>
+                            <img src="img/NecoPlush.jpg" class="imagem">
+                            </td>
+                            <td>
+                                <h3> Super neco arc, o melhor protudo já feito 🧏🧏 .<br>
+                                    Liga metálica de  alta qualidade.</h3>
+                            </td>
+                                <h2>Espécie Invasora</h2>
+                                <p>R$ 129,90</p>
+                            </tr>
+                        </table>
+                                <button class="adicionar"onclick="new Audio('audio/Neco.mp3').play()">Adicionar ao Carrinho</button>
+                            </div>
+                        </div>
+                        
+            <div class="produto">
+            <div class="produto" data-id="2" data-nome="Brolly" data-preco="189.00">
+                <table>
+                    <tr>
+                        <td>
+            <img src="img/Brolly Plush.avif" class="imagem">
+        </td>
+        <td> <h3>KAKAROOOOOTOOOOO!!!</h3></td>
+                <h2>Broly Ssj</h2>
+                <p>R$189,90 </p>
+            </tr>
+            </table>
+                <button class="adicionar" onclick="new Audio('Audio/broly-scream.mp3').play()">Adicionar ao Carrinho</button>
+            </div>
+            
+       
+<!--prograação do carrinho-->
+    <script src="js/script.js"></script>
 </body>
 </html>
-
 
