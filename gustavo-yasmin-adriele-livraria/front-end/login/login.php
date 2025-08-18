@@ -12,17 +12,21 @@ if ($conn->connect_error) {
 $email = $_POST['email'];
 $senha = $_POST['senha'];
 
-// Verificar se o usuário existe
+// Verificar se o usuário existe (atenção: isso ainda está usando senha em texto puro!)
 $sql = "SELECT * FROM usuarios WHERE email = '$email' AND senha = '$senha'";
 $result = $conn->query($sql);
 
-if ($result->num_rows === 1) {
+if ($result && $result->num_rows === 1) {
     $usuario = $result->fetch_assoc();
+
+    // Salva dados na sessão
     $_SESSION['usuario_id'] = $usuario['id'];
     $_SESSION['usuario_nome'] = $usuario['nome'];
-    echo "Login bem-sucedido! Bem-vindo, " . $_SESSION['usuario_nome'];
-    // Exemplo: redirecionar para o painel do usuário
-    // header("Location: painel.php");
+
+    // Redireciona para a página principal
+    header("Location: front-end/index.php");
+    exit;
+
 } else {
     echo "Email ou senha inválidos.";
 }
