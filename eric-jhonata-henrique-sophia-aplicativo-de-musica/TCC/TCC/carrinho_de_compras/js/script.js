@@ -1,3 +1,4 @@
+ let login = 0;
 document.addEventListener('DOMContentLoaded', function() {
     // Seleciona elementos
     const botoesAdicionar = document.querySelectorAll('.adicionar');
@@ -8,15 +9,18 @@ document.addEventListener('DOMContentLoaded', function() {
     // Inicializa carrinho
     let carrinho = [];
     let total = 0;
+   
     
     // Adiciona eventos aos botões
     botoesAdicionar.forEach(botao => {
         botao.addEventListener('click', adicionarAoCarrinho);
     });
     
+
+
     // Evento para finalizar compra
     botaoFinalizar.addEventListener('click', finalizarCompra);
-    
+
     // Função para adicionar produto ao carrinho
     function adicionarAoCarrinho(event) {
         const botao = event.target;
@@ -97,6 +101,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Função para finalizar a compra
     function finalizarCompra() {
+        if (login == 1){
         if (carrinho.length === 0) {
             alert('Seu carrinho está vazio!');
             return;
@@ -106,9 +111,18 @@ document.addEventListener('DOMContentLoaded', function() {
         carrinho = [];
         atualizarCarrinho();
     }
+    else{
+         alert('voce tem que se cadastrar primeiro!');
+    }
+    }
   
 });
+
 function play(){
 var audio = new Audio('sata.mp3');
 audio.play();
 };
+
+function permitido(){
+    login + 1;
+}
