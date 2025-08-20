@@ -33,7 +33,11 @@ INSERT INTO livraria_web.usuarios (nome, email, senha, tipo_usuario)
 VALUES ('jose de lima', 'joao@email.com', '512346', 'cliente');
  
 
+<<<<<<< HEAD
 INSERT INTO livraria_web.USUARIOS (nome, email, senha, tipo_usuario)
+=======
+INSERT INTO livraria_web.usuarios (nome, email, senha, tipo_usuario)
+>>>>>>> bd5022e2c8fb84b27ac83560f48d24f17884cb82
 VALUES ('eliane teodoro','elianelixto@email','1234567','cliente')
 
 
@@ -41,5 +45,5 @@ VALUES ('eliane teodoro','elianelixto@email','1234567','cliente')
 
 
 
-
-
+drop table if exists livraria_web.usuarios;
+drop table if exists livraria_web.LIVROS;
