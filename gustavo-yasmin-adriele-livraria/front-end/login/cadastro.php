@@ -23,7 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }
 
     // Verifica se o e-mail já está cadastrado
-    $verifica = $conn->prepare("SELECT id FROM usuarios WHERE email = ?");
+    $verifica = $conn->prepare("SELECT id FROM livraria_web.usuarios WHERE email = ?");
     $verifica->bind_param("s", $email);
     $verifica->execute();
     $verifica->store_result();
@@ -37,7 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $senhaHash = password_hash($senha, PASSWORD_DEFAULT);
 
     // Insere o usuário no banco
-    $stmt = $conn->prepare("INSERT INTO usuarios (nome, email, senha) VALUES (?, ?, ?)");
+    $stmt = $conn->prepare("INSERT INTO livraria_web.usuarios(nome, email, senha) VALUES (?, ?, ?)");
     $stmt->bind_param("sss", $nome, $email, $senhaHash);
 
     if ($stmt->execute()) {
