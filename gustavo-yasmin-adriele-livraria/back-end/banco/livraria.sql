@@ -21,6 +21,21 @@ CREATE TABLE livraria_web.LIVROS (
     capa_url VARCHAR(255)
 );
 
+CREATE PROCEDURE livraria_web.CADASTRO_USUARIO (IN p_nome VARCHAR(100), IN p_senha VARCHAR(255), IN p_email VARCHAR(100))
+BEGIN
+    DECLARE v_id INT;
+
+    -- Verifica se o e-mail já está cadastrado
+    SELECT id INTO v_id FROM livraria_web.usuarios WHERE email = p_email;
+
+    IF v_id IS NOT NULL THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Este email já está cadastrado.';
+    END IF;
+
+    -- Insere o novo usuário
+    INSERT INTO livraria_web.usuarios (nome, email, senha) VALUES (p_nome, p_email, p_senha);
+END;
+
 INSERT INTO livraria_web.LIVROS (valor, nome_produto, genero_categoria, autor, capa_url)
 VALUES( 52.90,'mulher no escuro','Thriller, Suspense','Raphael Montes','https://www.minhavidaliteraria.com.br/2019/07/10/resenha-uma-mulher-no-escuro-raphael-montes/');
 
@@ -31,13 +46,10 @@ VALUES(69.90,'sol e as estrelas',' Fantasia e Ficção Científica, Infantojuven
 
 INSERT INTO livraria_web.usuarios (nome, email, senha, tipo_usuario)
 VALUES ('jose de lima', 'joao@email.com', '512346', 'cliente');
- 
+  
 
-<<<<<<< HEAD
 INSERT INTO livraria_web.USUARIOS (nome, email, senha, tipo_usuario)
-=======
 INSERT INTO livraria_web.usuarios (nome, email, senha, tipo_usuario)
->>>>>>> bd5022e2c8fb84b27ac83560f48d24f17884cb82
 VALUES ('eliane teodoro','elianelixto@email','1234567','cliente')
 
 

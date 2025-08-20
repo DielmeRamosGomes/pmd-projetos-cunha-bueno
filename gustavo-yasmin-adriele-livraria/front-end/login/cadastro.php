@@ -1,4 +1,22 @@
 <?php
+include_once("conexao.php");
+
+$nome = trim($_POST["nome"]);
+$email = trim($_POST["email"]);
+$senha = $_POST["senha"];
+$confirmaSenha = $_POST["confirmaSenha"];
+
+$sql = "CALL CADASTRO_USUARIO('$nome','$senha','$email');" ;
+$salvar = mysqli_query($conexao,$sql);
+$row_total = mysqli_fetch_array($salvar);
+
+ if ($senha !== $confirmaSenha) {
+        echo "<script>alert('As senhas não coincidem!'); window.history.back();</script>";
+        exit;
+    }
+
+
+/*
 session_start();
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
@@ -57,4 +75,5 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 }
 
 $conn->close();
+*/
 ?>
