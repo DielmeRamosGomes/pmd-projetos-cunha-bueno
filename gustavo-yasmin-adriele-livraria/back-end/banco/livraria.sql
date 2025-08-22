@@ -59,3 +59,7 @@ VALUES ('eliane teodoro','elianelixto@email','1234567','cliente')
 
 drop table if exists livraria_web.usuarios;
 drop table if exists livraria_web.LIVROS;
+
+
+INSERT INTO livraria_web.livros (valor, nome_produto, genero_categoria, autor, capa_url)
+VALUES (50,90 mar de montros, antasia e Ficção Científica, Infantojuvenil, rick Riordan, )
