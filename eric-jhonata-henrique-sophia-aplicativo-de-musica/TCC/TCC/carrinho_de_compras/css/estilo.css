@@ -1,104 +1,227 @@
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 20px;
-    background-image:url('../img/fundo-de-compras.jpeg');
+/* ===== Base  de elementos para padronização e variaveis dentro do css para evitar valores diferentes   ===== */
+* { box-sizing: border-box; }
+
+
+:root{
+  --card-min: 240px;   /* largura mínima do card buscando responsividade em elementos*/
+  --gap: 16px;
+  --img-zoom: .88;     /* 0.80 = mais “zoom-out”; 1 = normal Buscando Dar dinamismo na pagina para apresentar imagens com resolução diferentes*/
+  --card-pad: 14px;    /* padding do card deixar visualmente mais agradavel*/
+  --btn-h: 44px;       /* altura aprox. do botão */
 }
 
-.container {
-    max-width: 1000px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    gap: 20px;
-    position:absolute;
-    top:100px; 
-    right: 10px;
+body{
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 20px;
+  background: url('../img/fundo-de-compras.jpeg') no-repeat fixed center / cover;
 }
 
-.produtos {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 15px;
+/* ===== Layout principal ===== */
+.container{
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 3fr 1.2fr;   /* catálogo | carrinho */
+  gap: 24px;
 }
 
-.produto {
-    background: white;
-    padding: 15px;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+/* grade de produtos visão geral */
+.produtos{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(var(--card-min), 1fr));
+  gap: var(--gap);
 }
 
-.produto button {
-    background: #4CAF50;
-    color: white;
-    border: none;
-    padding: 8px 12px;
-    border-radius: 3px;
-    cursor: pointer;
-    width: 100%;
+/* ===== Card Unitário do Produto ===== */
+.produto{
+  background: #fff;
+  padding: var(--card-pad);
+  /* espaço extra para o botão colado no rodapé */
+  padding-bottom: calc(var(--card-pad) + var(--btn-h) + 6px);
+  border-radius: 10px;
+  box-shadow: 0 1px 3px rgba(15,17,17,.15);
+  transition: box-shadow .2s ease, transform .05s ease;
+  position: relative; /* <- necessário pro botão absoluto como definimos diferentes comportamento para responsividade de elementos o absoluta pode não atrapalhar os diferentes layots */
 }
-.produto button:hover {
-    background: #6bff70;
-    color: rgb(255, 219, 219);
-    border: solid 2px black;
-    padding: 8px 12px;
-    border-radius: 3px;
-    cursor: pointer;
-    width: 100%;
-    box-shadow: black;
+.produto:hover{
+  box-shadow: 0 6px 18px rgba(15,17,17,.18);
+  transform: translateY(-1px);
 }
 
-.carrinho {
-    background: white;
-    padding: 15px;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    position: sticky;
-    top: 20px;
+/* Modificando Ordenação dos elementos das Tables de produto Ordenação IMG -> DESCRIÇÃO ->  Valor + Adição ao Carrinho  */
+.produto table{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  border-collapse: collapse;
 }
+.produto table tr{ display: contents; }
+.produto td{ display: block; padding: 0; }
 
-.itens-carrinho {
-    list-style: none;
-    padding: 0;
-    margin: 15px 0;
-}
+/* ordem dos 3 tds originais */
+.produto td:nth-child(1){ order: 0; }   /* imagem */
+.produto td:nth-child(3){ order: 1; }   /* descrição (h3)) */
+.produto td:nth-child(2){ order: 2; }   /* Valor + Adição ao Carrinho */
 
-.itens-carrinho li {
-    display: flex;
-    justify-content: space-between;
-    padding: 8px 0;
-    border-bottom: 1px solid #eee;
-}
-
-.total {
-    font-weight: bold;
-    font-size: 1.2em;
-    margin: 15px 0;
-}
-
-.finalizar {
-    background: #2196F3;
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    border-radius: 3px;
-    cursor: pointer;
-    width: 100%;
-}
+/* IMAGEM grande e visível no topo */
 .imagem{
-    max-width: 200px;
+  width: 100%;
+  aspect-ratio: 3 / 4;     /* retrato favorece plushies foi necessário incluir pois as imagens possuiam um padrao de resolução diferentes  */
+  height: auto;
+  object-fit: cover;       /* preenche e corta buscando deixar uma visão mais clara */
+  border-radius: 12px;
+  display: block;
+  background: #fff;
+  transform: scale(var(--img-zoom)); /* “zoom-out” leve */
+  transform-origin: center;
+}
+.produto:hover .imagem{ transform: scale(1); }
+
+/* META: título + preço (o botão será absoluto no rodapé do card) */
+.produto h2{
+  font-size: 16px;
+  font-weight: 600;
+  color: #0f1111;
+  margin: 0 0 4px 0;
+  line-height: 1.25;
+}
+.produto td:nth-child(3) p{
+  margin: 0 0 6px 0;
+  font-weight: 700;
+  color: #0f1111;
 }
 
-.titulo{
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    color:  #f7d302;
-    background-color:#fb2f1b;
-    height: 120px;
-    width: 135px;
+/* Botão colado no rodapé do card */
+.adicionar{
+  position: absolute;
+  left: var(--card-pad);
+  right: var(--card-pad);
+  bottom: var(--card-pad);
+  height: var(--btn-h);
+  background: #2a8703;
+  color: #fff;
+  border: 1px solid #1e5f02;
+  padding: 10px 12px;
+  border-radius: 22px;
+  cursor: pointer;
+  width: auto; /* ignora qualquer width:100% antigo */
+  transition: filter .15s ease, transform .05s ease;
+}
+.adicionar:hover{ filter: brightness(1.05); }
+.adicionar:active{ transform: translateY(1px); }
 
-    
-}  
+/* DESC: h3 abaixo (clamp padrão + fallback WebKit) */
+.produto h3{
+  margin: 0;
+  color: #0f1111;
+  font-size: 14px;
+  line-height: 1.4;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  /* padrão (se suportado) */
+  line-clamp: 3;
+
+  /* fallback WebKit */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}
+
+/* ===== Carrinho Modificamos para Trazer um layout agradável e em Modal ===== */
+.carrinho{
+  background: #fff;
+  padding: 16px;
+  border-radius: 10px;
+  box-shadow: 0 1px 3px rgba(15,17,17,.15);
+  position: sticky;
+  top: 20px;
+}
+.itens-carrinho{
+  list-style: none;
+  padding: 0;
+  margin: 12px 0;
+  max-height: 55vh;
+  overflow: auto;
+}
+.itens-carrinho li{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 0;
+  border-bottom: 1px solid #eee;
+  font-size: 14px;
+}
+.itens-carrinho .remover{
+  border: none;
+  background: #eee;
+  width: 26px; height: 26px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.total{
+  font-weight: 700;
+  font-size: 1.05rem;
+  margin: 10px 0 12px;
+}
+.finalizar{
+  background: #146eb4;
+  color: #fff;
+  border: 1px solid #0f4f84;
+  padding: 12px 14px;
+  border-radius: 20px;
+  cursor: pointer;
+  width: 100%;
+}
+.finalizar:hover{ filter: brightness(1.05); }
+
+.modal{
+  position: fixed; inset: 0;
+  display: grid; place-items: center;
+  background: rgba(0,0,0,.5);
+  z-index: 2000;
+  opacity: 0; pointer-events: none;
+  transition: opacity .2s ease;
+}
+.modal.is-open{ opacity: 1; pointer-events: auto; }
+
+.modal__dialog{
+  width: min(92vw, 600px);
+  max-height: 90vh;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.25);
+  padding: 12px;
+  overflow: auto;
+  position: relative;
+}
+.modal__overlay{ position: absolute; inset: 0; }
+
+/* X fechar */
+.modal__close{
+  position: sticky; /* fica visível ao rolar */
+  top: 0;
+  margin-left: auto;
+  border: none;
+  background: transparent;
+  font-size: 28px;
+  line-height: 1;
+  cursor: pointer;
+  color: #444;
+}
+
+/* Ajustes do painel carrinho quando estiver dentro da modal */
+.modal .carrinho{
+  position: static;         /* sobrepõe seu sticky */
+  box-shadow: none;         /* já temos box do dialog */
+  padding: 8px 4px 0 4px;   /* leve ajuste interno */
+  border-radius: 8px;
+}
+.modal .itens-carrinho{ max-height: 55vh; overflow: auto; }
 
 #botaocadastro{
     background-color: black;
@@ -106,14 +229,84 @@ body {
     border: 5wwwpx solid transparent;
     border-radius: 40%;
     padding: 10px;
-    transition: border-color 0.25s;
+    transition: border-color 0.25s;}
+
+
+.icon-cart-btn[data-count]::after{
+  content: attr(data-count);
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 5px;             /* expande para 2+ dígitos */
+  border-radius: 999px;
+  background: #e53935;        /* vermelho “badge” */
+  color: #fff;
+  font-size: 12px;
+  line-height: 18px;
+  text-align: center;
+  border: 2px solid #fff;     /* anel branco para destacar */
+  box-shadow: 0 1px 4px rgba(0,0,0,.25);
 }
-#botaocadastro:hover{
-    transition: border-color 0.25s;
-    border-color: yellow;
-    cursor: pointer;
+
+
+/* ===== Responsividade Diferentes Resoluções de Aparelhos ===== */
+
+@media (max-width: 1200px){
+  :root{ --card-min: 220px; }
 }
-#botaocadastro:focus,
-#botaocadastro:focus-visible{
-    outline: 4px auto -webkit -focus -ring-color;
+@media (max-width: 1024px){
+  .container{ grid-template-columns: 1fr; }
+  .carrinho{
+    position: static;
+    max-width: 540px;
+    margin: 0 auto;
+  }
+}
+@media (max-width: 768px){
+  body{ padding: 12px; }
+  .produto h3{
+    line-clamp: 4;         /* padrão (se houver suporte) */
+    -webkit-line-clamp: 4; /* fallback WebKit */
+  }
+}
+@media (max-width: 480px){
+  /* mantemos só ajustes de imagem; nada de alterar a grade */
+  .imagem{ aspect-ratio: 1 / 1; }  /* quadrada no mobile, fica maior */
+}
+
+/* ===== Rolagem lateral SEMPRE ===== */
+.produtos{
+  /* transforma em faixa horizontal */
+  grid-template-columns: none;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(var(--card-min), 1fr);
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x proximity;
+  padding-bottom: 6px; /* evita cortar a sombra do card */
+}
+
+.produto{
+  min-width: var(--card-min);
+  scroll-snap-align: start;
+}
+
+/* Botão do carrinho fixo na lateral direita (verticalmente centralizado) */
+.icon-cart-btn{
+  position: fixed;
+  top: 10%;
+  right: max(10px, env(safe-area-inset-right) + 10px); /* respeita notch */
+  transform: translateY(-50%);
+  z-index: 1000;
+}
+
+/* tamanho do ícone  */
+.icon-cart-btn img{
+  width: 400px;
+  height: auto;
+  display: block;
+  cursor: pointer;
 }
