@@ -1,0 +1,25 @@
+criar um rep-local esses comandos você vai colocar apenas uma vez quando inicializar o rep-local
+git init
+git config --global user.name "seu-nome-de-usuario-do-git"
+git config --global user.email "seu-email-de-usuario-do-git"
+git branch -M main
+git clone https://github.com/DielmeRamosGomes/pmd-projetos-cunha-bueno.git
+
+ATENÇÃO sempre antes de codificar dar o comando 
+git pull origin main
+para pegar as atualizações do git senão pode dar erro de merge
+
+comandos no terminal para subir para o github suas atualizações
+git add .   // pega todas as atualizações 
+git commit -m "deve-passar-uma-mensagem-aqui"
+git push origin main // pega as atualizações e manda para o github
+
+alterado por dielme
+
+alterado por henrique
+
+ksg98g9
+
+opiewnuhweipuhweipuhiuphoi
+
+Eric tem pau sujo
