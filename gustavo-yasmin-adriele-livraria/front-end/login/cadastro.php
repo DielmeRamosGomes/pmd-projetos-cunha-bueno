@@ -15,6 +15,8 @@ $row_total = mysqli_fetch_array($salvar);
         exit;
     }
 
+?>
+
 
 /*
 session_start();

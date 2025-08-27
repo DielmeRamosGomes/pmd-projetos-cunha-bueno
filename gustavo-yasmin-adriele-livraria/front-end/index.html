@@ -13,6 +13,8 @@ session_start();
 <body>
 
    <header>
+
+    <a href="carinho.html" class="icone-carrinho">🛒 Carrinho</a>
     <DIV class="MEIO">
         <h1>BOOKS</h1>
         <form action="#" method="get" class="barra-pesquisa">
@@ -32,7 +34,7 @@ session_start();
     <DIV class="MEIO">
         <section class="livros">
             <div class="livro">
-                <img src="img/Capa-O-Sol-e-a-Estrela-1.jpg" alt="O Sol e a Estrela">
+                <img src="img/capa-o-sol-e-a-estrela.jpg" alt="O Sol e a Estrela">
                 <div>
                     <h2>O Sol e a Estrela </h2>
                     <p>rick riordan</p>
@@ -40,6 +42,12 @@ session_start();
                     <p>Os semideuses Nico e Will enfrentam uma
                          jornada perigosa pelo Tártaro.</p>
                     <p><strong>R$ 69,90</strong></p>
+                   <form action="carrinho.php" method="post">
+  <input type="hidden" name="nome" value="O Sol e a Estrela">
+  <input type="hidden" name="preco" value="69.90">
+  <button type="submit" class="botao-comprar">Adicionar ao Carrinho</button>
+</form>
+
                     <a href="produtos/produt2.html">Comprar</a>
                 </div>
             </div>
@@ -115,7 +123,7 @@ session_start();
                 <img src="img/triologia verão.jpg" alt="trilogia verão">
                 <div>
                     <h2>Livro Box Trilogia Verão</h2>
-                    <p>autor: Jenny Han</p>
+                    <p>autor:Jenny Han</p>
                     <p>Gênero/categoria:drama e romance </p>
                     <p>Na Trilogia Verão, acompanhamos Belly dos 15 aos 24 anos. Em meio a descobertas e mudanças, ela se apaixona,
                         se envolve em um triângulo amoroso, entra na universidade e descobre que amadurecer também significa
