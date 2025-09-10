@@ -112,7 +112,7 @@
   </style>
 </head>
 <body>
-<form action="submit.php" method="post">
+<form action="submit.php" method="post" id="form">
   <div class="container">
     <table>
       <tr>
@@ -142,6 +142,7 @@
 <img src="img/osakatime3.jpg" alt="Banner esquerdo">
   </div>
 </form>
+<button id="btn" type="submit">✨ Enviar-express ✨</button>
 
 <script>
   document.getElementById("botao1").disabled = true;
@@ -158,11 +159,25 @@
       document.getElementById("botao1").disabled = true;
     }
   });
+
+   const btn = document.querySelector('#btn');
+   btn.addEventListener('click', () => {
+    event.preventDefault;
+    const form = document.querySelector('#form');
+    const formData = new FormData(form);
+    const usuario = {
+      _nome: formData.get('name'),
+      _email: email,
+      _senha: senha
+    }
+   });
+
 </script>
 
  <script src="js/script.js"></script>
 
 <script>
+
 function permitido(){
     login + 1;
 }
