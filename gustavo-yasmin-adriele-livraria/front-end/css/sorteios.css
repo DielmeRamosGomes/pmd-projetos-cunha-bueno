@@ -1,0 +1,191 @@
+
+.grid-container{
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    /*menu e conteududo */
+    grid-template-rows: 1fr 5fr 2fr ;
+    /*header,  conteúdo e foot e e o rodape*/
+    grid-template-areas:
+    "header header"
+    "menu main"
+    "footer footer"; 
+    gap:10px;
+}
+
+.header{
+    grid-area: header;
+    background-color: #192637;
+    padding: 20px;
+    text-align: center;
+}
+
+.menu{
+    grid-area: menu;
+    background-color: #dcdcdc;
+    padding: 20px;
+}
+
+.main {
+    grid-area: main;
+    background-color: #b1b0b0ec;
+    padding: 20px;
+    text-align: center;
+}
+
+.foooter{
+    grid-area: footer;
+    background-color: #f0f0f0;
+    padding: 20px;
+    text-align: center;
+}
+
+/* responsividade */
+@media (max-width: 768px) {
+    .grid-container {
+        grid-template-columns: 1fr; 
+        /* remover a coluna do menu */
+        grid-template-areas:
+        "header"
+        "main"
+        "footer"
+        "menu";
+    }
+
+
+.menu {
+    display: none;
+    /*esconder o menu em telas pequenas */
+    }
+
+}
+@media (max-width: 768px) {
+    .navbar-links {
+        display: none; /*esconder os links de navegação no mobile */
+        flex-direction: column;
+        width: 100%;
+        position: absolute;
+        top: 60px;
+        left: 0;
+    }
+
+
+    .menu{
+        display: grid; /*escondido no mobile*/
+        grid-area: menu;
+        padding:  20px;
+    }
+
+    .menu.show {
+        display: block; /* aparecer quando clica */
+
+    }
+
+    .menu-toggle {
+        display: block; /* icone só no mobile */
+    }
+    .menu-toggle.active {  /*estilo ao clicar*/
+        /* mudar o icone para um 'x' */
+    } 
+}
+
+@media (max- width: 768px) {
+    .navbar-links{
+        /* esconder os links no mobile*/
+        flex-direction: column;
+        width: 100%;
+        position: absolute;
+        top: 60px;
+        left: 0;
+    }
+
+    .menu-toggle {
+        display: block; 
+        /* icone  no mobile */
+    }
+    .menu-toggle {
+        /* estilo ao clicar */
+        /* mudar o icone para um 'x' */
+    }
+}
+
+ul {
+    list-style: none;
+    /* tira as bolinhas */
+    padding: 0;
+    margin: 0;
+    width: 200px;
+    /* largura fixa do menu */
+}
+
+ul li{
+    margin:  5px 0;
+    /* espaço entre os botões */
+}
+
+ul li a {
+    display: block;
+    /* ocupa toda a largura do li */
+    padding: 12px;
+    /*altura do botão */
+    text-decoration: none;
+    /*tira o sublinaddo */
+    background-color: black;
+    /* COR DO BOTÃO */
+    color: #fff;
+    /* cor do texto*/
+    border-radius:  5px;
+    /* borda arredondadas */
+    font-family: arial, sans-serif;
+    font-size: 16px;
+    text-align: center;
+    /* centralizar o texto */
+    transition: background-color 0.3s ease;
+}
+ul li a:hover {
+    background-color: #192637;
+    /* cor no hover */
+}
+
+.logo {
+    width: 120px;               /* ligeiramente maior para destaque */
+    height: auto;               /* mantém a proporção original da imagem */
+    display: block;
+    margin: 20px auto;          /* centraliza e dá espaço */
+    border-radius: 12px;        /* cantos arredondados  */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2); /* sombra suave */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;            /* dá sensação de clique */
+}
+
+/* Efeito hover */
+.logo:hover {
+    transform: scale(1.06);     /* zoom suave */
+    box-shadow: 0 6px 16px rgba(0,0,0,0.3);
+}
+
+.descricao{
+    text-align: left;
+    font-family: 'Arial', sans-serif;
+    color: #032a65;
+    margin: 15px 20px;
+    font-size: 20px;
+    line-height: 1.5;
+}
+
+.titulo{
+    text-align: center;
+    font-family: 'Arial', sans-serif;
+    color: #032a65;
+    margin: 15px 20px;
+    font-size: 24px;
+    line-height: 1.5;
+}
+
+.subtitulo {
+    text-align: center;
+    font-family: 'Arial', sans-serif;
+    color: #032a65;
+    margin: 10px 20px;
+    font-size: 18px;
+    line-height: 1.4;
+}

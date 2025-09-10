@@ -122,3 +122,19 @@ footer {
     background-color: #ffd700;
     box-shadow: 0px 4px 10px rgba(255, 255, 0, 0.5);
 }
+
+
+
+.icone-carrinho {
+    font-size: 18px;       /* tamanho do texto/emoji */
+    color: #333;           /* cor do texto */
+    text-decoration: none; /* tira o sublinhado */
+    padding: 10px 15px;    /* espaçamento interno */
+    border-radius: 8px;    /* cantos arredondados */
+    background-color: #f0f0f0; /* fundo cinza claro */
+}
+
+.icone-carrinho:hover {
+    background-color: #ddd; /* muda cor ao passar o mouse */
+    color: #000;
+}

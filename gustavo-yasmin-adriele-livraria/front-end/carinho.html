@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Carrinho de Compras</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    .carrinho { margin-top: 20px; border-top: 2px solid #000; padding-top: 10px; }
+    button { padding: 5px 10px; margin-top: 5px; cursor: pointer; }
+  </style>
+</head>
+<body>
+
+  <h1>🛒 Seu Carrinho</h1>
+
+  <!-- Carrinho -->
+  <div class="carrinho">
+    <h2>Itens adicionados</h2>
+    <ul id="lista-carrinho"></ul>
+    <p><strong>Total: R$ <span id="total">0</span></strong></p>
+    <button onclick="finalizarCompra()">Finalizar Compra</button>
+  </div>
+
+  <script>
+    let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
+
+    function atualizarCarrinho() {
+      const lista = document.getElementById("lista-carrinho");
+      const totalSpan = document.getElementById("total");
+      lista.innerHTML = "";
+      let total = 0;
+
+      carrinho.forEach((item, index) => {
+        total += item.preco;
+        lista.innerHTML += `<li>${item.nome} - R$ ${item.preco.toFixed(2)} 
+          <button onclick="removerItem(${index})">Remover</button></li>`;
+      });
+
+      totalSpan.innerText = total.toFixed(2);
+      localStorage.setItem("carrinho", JSON.stringify(carrinho));
+    }
+
+    function removerItem(index) {
+      carrinho.splice(index, 1);
+      atualizarCarrinho();
+    }
+
+    function finalizarCompra() {
+      if (carrinho.length === 0) {
+        alert("Seu carrinho está vazio!");
+        return;
+      }
+      alert("Compra finalizada com sucesso!");
+      carrinho = [];
+      atualizarCarrinho();
+    }
+
+    // Atualiza ao carregar
+    atualizarCarrinho();
+  </script>
+
+</body>
+</html>
