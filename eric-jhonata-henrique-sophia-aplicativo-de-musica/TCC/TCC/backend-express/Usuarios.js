@@ -1,6 +1,5 @@
 class Usuario {
-    constructor(id, nome, email, senha, ) {
-        this.id = id;
+    constructor(nome, email, senha) {
         this.nome = nome;
         this.email = email;
         this.senha = senha;
@@ -22,6 +21,7 @@ class Usuario {
         return this.senha;
     }
  
+    
     exibirDetalhes() {
         console.log(`ID: ${this.getId()}`);
         console.log(`Nome: ${this.getNome()}`);

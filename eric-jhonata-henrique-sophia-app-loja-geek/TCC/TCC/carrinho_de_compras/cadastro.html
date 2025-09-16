@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Plushie Store</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Rubik+Glitch&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Rubik+Glitch&display=swap"
+    rel="stylesheet">
   <style>
     body {
       margin: 0;
@@ -18,7 +20,7 @@
     }
 
     .container {
-      background: linear-gradient(135deg, rgba(0,0,0,0.8), rgba(100,0,255,0.7));
+      background: linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(100, 0, 255, 0.7));
       margin: 35px auto;
       padding: 20px;
       max-width: 700px;
@@ -29,9 +31,12 @@
     }
 
     @keyframes pulse {
-      0%, 100% {
+
+      0%,
+      100% {
         box-shadow: 0 0 17px 7px rgba(255, 0, 255, 0.5);
       }
+
       50% {
         box-shadow: 0 0 35px 14px rgba(0, 255, 255, 0.7);
       }
@@ -101,86 +106,100 @@
       table {
         display: block;
       }
+
       td {
         display: block;
         text-align: center;
       }
+
       img {
         max-width: 50%;
       }
     }
   </style>
 </head>
+
 <body>
-<form action="submit.php" method="post" id="form">
-  <div class="container">
-    <table>
-      <tr>
-        
-        <td>
-          <h1>🌸 Plushie Store 🌸</h1>
-          <p>Insira seu nome:</p>
-          <input type="text" name="name" placeholder="pei" id="inputnome" required>
+  <form action="submit.php" method="post" id="form">
+    <div class="container">
+      <table>
+        <tr>
 
-          <p>Insira seu email:</p>
-          <input type="text" name="email" placeholder="ayumukasuga@gmail.com" id="inputemail" required>
+          <td>
+            <h1>🌸 Plushie Store 🌸</h1>
+            <p>Insira seu nome:</p>
+            <input type="text" name="name" placeholder="pei" id="inputnome" required>
 
-          <p>Insira sua senha:</p>
-          <input type="password" name="senha" id="senha" required>
+            <p>Insira seu email:</p>
+            <input type="text" name="email" placeholder="ayumukasuga@gmail.com" id="inputemail" required>
 
-          
+            <p>Insira sua senha:</p>
+            <input type="password" name="senha" id="senha" required>
 
-          <br>
-<a href="index.html">
-          <button id="botao1" type="submit" disabled onclick="permitido();">✨ Enviar ✨</button>
-</a>
-        </td>
 
-      </tr>
 
-    </table>
-<img src="img/osakatime3.jpg" alt="Banner esquerdo">
-  </div>
-</form>
-<button id="btn" type="submit">✨ Enviar-express ✨</button>
+            <br>
+            <a href="index.html">
+              <button id="botao1" type="submit" disabled onclick="permitido();">✨ Enviar ✨</button>
+            </a>
+          </td>
 
-<script>
-  document.getElementById("botao1").disabled = true;
+        </tr>
 
-  addEventListener("input", function () {
-    var nome = document.getElementById("inputnome").value;
-    var conteudoemail = document.getElementById("inputemail").value;
-    var senha = document.getElementById("senha").value;
-  
+      </table>
+      <img src="img/osakatime3.jpg" alt="Banner esquerdo">
+    </div>
+  </form>
+  <button id="btn" type="submit">✨ Enviar-express ✨</button>
 
-    if (nome && conteudoemail && senha ) {
-      document.getElementById("botao1").disabled = false;
-    } else {
-      document.getElementById("botao1").disabled = true;
+  <script>
+    document.getElementById("botao1").disabled = true;
+
+    addEventListener("input", function () {
+      var nome = document.getElementById("inputnome").value;
+      var conteudoemail = document.getElementById("inputemail").value;
+      var senha = document.getElementById("senha").value;
+
+
+      if (nome && conteudoemail && senha) {
+        document.getElementById("botao1").disabled = false;
+      } else {
+        document.getElementById("botao1").disabled = true;
+      }
+    });
+
+    const btn = document.querySelector('#btn');
+    btn.addEventListener('click', () => {
+      event.preventDefault;
+      const form = document.querySelector('#form');
+      const formData = new FormData(form);
+      const usuario = {
+        _nome: formData.get('name'),
+        _email: formData.get('email'),
+        _senha: formData.get('senha')
+      }
+
+      console.log(usuario);
+
+      fetch('http://localhost:3000/cadastrarusuario', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(usuario)
+      });
+    });
+
+  </script>
+
+  <script src="js/script.js"></script>
+
+  <script>
+
+    function permitido() {
+      login + 1;
     }
-  });
-
-   const btn = document.querySelector('#btn');
-   btn.addEventListener('click', () => {
-    event.preventDefault;
-    const form = document.querySelector('#form');
-    const formData = new FormData(form);
-    const usuario = {
-      _nome: formData.get('name'),
-      _email: email,
-      _senha: senha
-    }
-   });
-
-</script>
-
- <script src="js/script.js"></script>
-
-<script>
-
-function permitido(){
-    login + 1;
-}
-</script>
+  </script>
 </body>
+
 </html>

@@ -5,7 +5,7 @@
 import express from 'express';
 import Conexao from './Conexao.js';
 import cors from 'cors';
-import Usuario from './Usuario.js';
+import Usuario from './Usuarios.js';
  
 const app = express();
 //const cors = cors();
@@ -13,7 +13,7 @@ const app = express();
 // use middleware cors
 app.use(cors(
   {
-    origin: 'http://127.0.0.1:5500/'
+    origin: 'http://127.0.0.1:5500'
   })
 );
  
@@ -46,20 +46,20 @@ app.get('/listarusuarios', (req, res) => {
 });
  
 app.post('/cadastrarusuario', async (req, res) => {
-  let { id, nome, email, senha} = req.body;
+  let {nome, email, senha} = req.body;
  
-  if (!id || !nome || !email || !senha) {
+  if (!nome || !email || !senha) {
     return res.status(400).json({ message: 'Todos os campos são obrigatórios!' });
   }
  
-  let novoUsuario = new Usuario(id, nome, email, senha);
+  let novoUsuario = new Usuario(nome, email, senha);
  
   lista_usuarios.push(novoUsuario);
  
   try {
     const connection = await usarConexao();
-    const [rows] = await connection.query('INSERT INTO mydatabase.usuarios(nome, email, senha) VALUES (?, ?, ?);',
-      [id, nome, email, senha]
+    const [rows] = await connection.query('INSERT INTO mydatabase.usuarios(name, email, senha) VALUES (?, ?, ?);',
+      [nome, email, senha]
     );
     console.log(rows);
     connection.release();
