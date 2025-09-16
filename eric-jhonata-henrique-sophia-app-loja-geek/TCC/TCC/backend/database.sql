@@ -2,7 +2,7 @@ CREATE DATABASE mydatabase;
 
 USE mydatabase;
 
-CREATE TABLE users (
+CREATE TABLE mydatabase.usuarios (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(255),
     email VARCHAR(255),
@@ -10,7 +10,7 @@ CREATE TABLE users (
     endereco varchar(255)
 );
 
-alter table usuarios
+alter table mydatabase.usuarios
 drop column endereco;
 
 
@@ -35,3 +35,5 @@ o dificil é se o usuario comprar mais de um produto ou comprar produtos diferen
 se não por isso o resto ta praticamente ai. é claro seria bom dar uma revisada
 -osaka
 */
+
+select * from mydatabase.usuarios;
