@@ -25,7 +25,7 @@ let lista_produtos = [];
 let lista_usuarios = [];
  
 async function usarConexao() {
-  const conexao = new Conexao('localhost', 3306, 'root', '', 'estoque');
+  const conexao = new Conexao('localhost', 3306, 'root', '', 'livraria_web');
   const pool = await conexao.conectar();
   const connection = await pool.getConnection();
   return connection;
@@ -35,7 +35,7 @@ app.get('/listarusuarios', (req, res) => {
   //res.json(lista_produtos);
   usarConexao()
     .then(connection => {
-      return connection.query('SELECT * FROM estoque.usuarios');
+      return connection.query('SELECT * FROM livraria_web.usuarios');
     })
     .then(([rows]) => {
       res.json(rows);
@@ -47,20 +47,20 @@ app.get('/listarusuarios', (req, res) => {
 });
  
 app.post('/cadastrarusuario', async (req, res) => {
-  let { id, nome, email, senha, data_cadastro, ativo } = req.body;
+  let {nome, email, senha, data_cadastro} = req.body;
  
-  if (!id || !nome || !email || !senha || !data_cadastro || ativo === undefined) {
+  if (!nome || !email || !senha || !data_cadastro) {
     return res.status(400).json({ message: 'Todos os campos são obrigatórios!' });
   }
  
-  let novoUsuario = new Usuario(id, nome, email, senha, data_cadastro, ativo);
+  let novoUsuario = new Usuario( nome, email, senha, data_cadastro);
  
   lista_usuarios.push(novoUsuario);
  
   try {
     const connection = await usarConexao();
-    const [rows] = await connection.query('INSERT INTO estoque.usuarios(id, nome, email, senha, data_cadastro, ativo) VALUES (?, ?, ?, ?, ?, ?);',
-      [id, nome, email, senha, data_cadastro, ativo]
+    const [rows] = await connection.query('INSERT INTO livraria_web.usuarios(nome, email, senha, data_cadastro) VALUES (?, ?, ?, ?);',
+      [ nome, email, senha, data_cadastro]
     );
     console.log(rows);
     connection.release();
