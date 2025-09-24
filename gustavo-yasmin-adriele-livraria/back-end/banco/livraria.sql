@@ -6,8 +6,7 @@ CREATE TABLE livraria_web.usuarios (
     nome VARCHAR(100) NOT NULL,
     email VARCHAR(100) NOT NULL UNIQUE,
     senha VARCHAR(255) NOT NULL,
-    data_cadastro TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    tipo_usuario ENUM('cliente', 'admin') DEFAULT 'cliente'
+    data_cadastro date
 );
 
 USE livraria_web;
@@ -63,3 +62,10 @@ drop table if exists livraria_web.LIVROS;
 
 INSERT INTO livraria_web.livros (valor, nome_produto, genero_categoria, autor, capa_url)
 VALUES (50,90 mar de montros, antasia e Ficção Científica, Infantojuvenil, rick Riordan, )
+
+select * from livraria_web.usuarios;
+
+
+
+
+

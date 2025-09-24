@@ -3,10 +3,10 @@
 // npm install cors
  
 import express from 'express';
-import Produto from './Produto.js';
+//import Produto from './Produto.js';
 import Conexao from './Conexao.js';
 import cors from 'cors';
-import Usuario from './Usuario.js';
+import Usuario from './Usuarios.js';
  
 const app = express();
 //const cors = cors();
@@ -14,7 +14,7 @@ const app = express();
 // use middleware cors
 app.use(cors(
   {
-    origin: 'http://localhost:5173'
+    origin: 'http://127.0.0.1:5500/'
   })
 );
  
@@ -64,7 +64,7 @@ app.post('/cadastrarusuario', async (req, res) => {
     );
     console.log(rows);
     connection.release();
-    res.status(201).json({ message: 'Usuário cadastrado com sucesso!', produto: novoProduto });
+    res.status(201).json({ message: 'Usuário cadastrado com sucesso!', usuario: novoUsuario });
   } catch (error) {
     console.error('Erro ao inserir usuário:', error);
     res.status(500).json({ error: 'Erro ao inserir o usuário no banco de dados' });

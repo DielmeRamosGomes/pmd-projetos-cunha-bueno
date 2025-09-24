@@ -1,4 +1,4 @@
-mport mysql from 'mysql2/promise'; // Usando a API de Promises para facilitar o async/await
+import mysql from 'mysql2/promise'; // Usando a API de Promises para facilitar o async/await
  
 class Conexao {
     constructor(host, port, user, password, database) {
