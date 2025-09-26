@@ -32,10 +32,12 @@ select * from mydatabase.usuarios;
 /* ESSA É A TABELA DE PRODUTOS, ELA CONTEM INFORMAÇÕES SOBRE OS PRODUTOS COMO PREÇO E TALS*/
 
 
-CREATE TABLE produtos (
+CREATE TABLE mydatabase.produtos (
     id_produto INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(255),
-    preco decimal(10,2)
+    nome VARCHAR(255) not null,
+    preco decimal(10,2) not null,
+    descricao VARCHAR(300) not null,
+    imagem varchar(255) not null
     /*adicionar descrição pra colocar elas no site por meio do sql em vez de html*/
 );
 
