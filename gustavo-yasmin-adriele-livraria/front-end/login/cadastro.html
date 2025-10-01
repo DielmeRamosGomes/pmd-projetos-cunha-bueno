@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Cadastro - Livraria Web</title>
   <link rel="stylesheet" href="./login.css" />
 </head>
+
 <body>
   <div class="login-container">
     <h2>Cadastre-se</h2>
@@ -22,7 +24,7 @@
       <label for="confirmaSenha">Confirme a Senha:</label>
       <input type="password" id="confirmaSenha" name="confirmaSenha" required minlength="6" />
 
-      <button type="submit">Cadastrar</button>
+      <button id="btn-cadastrar" type="submit">Cadastrar</button>
       <p class="link-cadastro">
         Já tem conta? <a href="login.html">Entrar aqui</a>
       </p>
@@ -40,6 +42,42 @@
         alert("As senhas não coincidem!");
       }
     });
+
+    function dataCadastro() {
+      const dataAtual = new Date();
+
+      // 2. Extrai os componentes da data
+      const dia = String(dataAtual.getDate()).padStart(2, '0'); // Obtém o dia e garante que tenha 2 dígitos
+      const mes = String(dataAtual.getMonth() + 1).padStart(2, '0'); // Obtém o mês (adicionando 1 pois é baseado em 0) e garante 2 dígitos
+      const ano = dataAtual.getFullYear(); // Obtém o ano
+
+      // 3. Formata a data no padrão dia/mês/ano
+      const dataFormatada = `${ano}-${mes}-${dia}`;
+      return dataFormatada;
+    }
+
+    const btnCadastrar = document.querySelector('#btn-cadastrar')
+    btnCadastrar.addEventListener('click', (event) => {
+      event.preventDefault();
+      const formData = new FormData(form);
+      const usuario = {
+        nome: formData.get('nome'),
+        email: formData.get('email'),
+        senha: formData.get('senha'),
+        data_cadastro: dataCadastro()
+      }
+    });
+    console.log(usuario);
+    fetch('http://localhost:3000/cadastrarusuario', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(usuario)
+    });
+
+
   </script>
 </body>
+
 </html>
