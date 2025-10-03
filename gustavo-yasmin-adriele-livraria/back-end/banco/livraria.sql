@@ -11,7 +11,7 @@ CREATE TABLE livraria_web.usuarios (
 
 USE livraria_web;
 
-CREATE TABLE livraria_web.LIVROS (
+CREATE TABLE livraria_web.livros(
     ID INT AUTO_INCREMENT PRIMARY KEY,
     valor DECIMAL(10,2),
     nome_produto VARCHAR(100) NOT NULL,
