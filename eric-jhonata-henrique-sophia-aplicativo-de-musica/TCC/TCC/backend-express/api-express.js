@@ -6,7 +6,7 @@ import express from 'express';
 import Conexao from './Conexao.js';
 import cors from 'cors';
 import Usuario from './Usuarios.js';
- 
+import Produto from './Produtos.js';
 const app = express();
 //const cors = cors();
  
@@ -20,7 +20,7 @@ app.use(cors(
 // Middleware para analisar o corpo da requisição como JSON
 app.use(express.json());
  
-//let lista_produtos = [];
+let lista_produtos = [];
 let lista_usuarios = [];
  
 async function usarConexao() {
@@ -86,20 +86,20 @@ app.get('/listarprodutos', (req, res) => {
 });
  
 app.post('/cadastrarproduto', async (req, res) => {
-  let { _id_produto, _nome, _descricao, _id_vendedor, _data_cadastro, _ativo } = req.body;
+  let { nome, preco, descricao, urlimagem } = req.body;
  
-  if (!_id_produto || !_nome || !_descricao || !_id_vendedor || !_data_cadastro || _ativo === undefined) {
+  if ( !nome || !preco || !descricao || !urlimagem) {
     return res.status(400).json({ message: 'Todos os campos são obrigatórios!' });
   }
  
-  let novoProduto = new Produto(_id_produto, _nome, _descricao, _id_vendedor, _data_cadastro, _ativo);
+  let novoProduto = new Produto( nome, preco, descricao, urlimagem);
  
   lista_produtos.push(novoProduto);
- 
+  console.log(`nome ${novoProduto.getNome()}`);
   try {
     const connection = await usarConexao();
-    const [rows] = await connection.query('INSERT INTO estoque.produtos(id_produto, nome, descricao, id_vendedor, data_cadastro, ativo) VALUES (?, ?, ?, ?, ?, ?);',
-      [_id_produto, _nome, _descricao, _id_vendedor, _data_cadastro, _ativo]
+    const [rows] = await connection.query('INSERT INTO mydatabase.produtos(nome, preco, descricao, urlimagem) VALUES ( ?, ?, ?, ?);',
+      [ nome, preco, descricao, urlimagem]
     );
     console.log(rows);
     connection.release();

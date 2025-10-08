@@ -37,9 +37,11 @@ CREATE TABLE mydatabase.produtos (
     nome VARCHAR(255) not null,
     preco decimal(10,2) not null,
     descricao VARCHAR(300) not null,
-    imagem varchar(255) not null
+    urlimagem varchar(255) not null
     /*adicionar descrição pra colocar elas no site por meio do sql em vez de html*/
 );
+
+select * from mydatabase.produtos;
 
 /*aqui vamos colocar as informações do produto, preco e nome. lembre de depois colocar as informações de cada produto aqui, comecem pequeno por motivos de teste*/
 
