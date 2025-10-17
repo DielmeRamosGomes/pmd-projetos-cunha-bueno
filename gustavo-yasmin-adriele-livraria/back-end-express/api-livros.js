@@ -71,22 +71,22 @@ app.post('/cadastrarusuario', async (req, res) => {
   }
 });
  
-app.get('/listarprodutos', (req, res) => {
+app.get('/listarlivros', (req, res) => {
   //res.json(lista_produtos);
   usarConexao()
     .then(connection => {
-      return connection.query('SELECT * FROM estoque.produtos');
+      return connection.query('SELECT * FROM livraria_web.livros');
     })
     .then(([rows]) => {
       res.json(rows);
     })
     .catch(error => {
-      console.error('Erro ao listar produtos:', error);
-      res.status(500).json({ error: 'Erro ao listar produtos' });
+      console.error('Erro ao listar livros:', error);
+      res.status(500).json({ error: 'Erro ao listar livros' });
     });
 });
  
-app.post('/cadastrarproduto', async (req, res) => {
+app.post('/cadastrarlivros', async (req, res) => {
   let { _id_produto, _nome, _descricao, _id_vendedor, _data_cadastro, _ativo } = req.body;
  
   if (!_id_produto || !_nome || !_descricao || !_id_vendedor || !_data_cadastro || _ativo === undefined) {

@@ -14,11 +14,22 @@ USE livraria_web;
 CREATE TABLE livraria_web.livros(
     ID INT AUTO_INCREMENT PRIMARY KEY,
     valor DECIMAL(10,2),
-    nome_produto VARCHAR(100) NOT NULL,
-    genero_categoria VARCHAR(100) NOT NULL,
+    nome_livro VARCHAR(100) NOT NULL,
+    genero VARCHAR(100) NOT NULL,
     autor VARCHAR(100),
-    capa_url VARCHAR(255)
+    capa_url VARCHAR(255),
+    editora VARCHAR(100),
+    data_publicacao DATE,
+    descricao VARCHAR(100) 
 );
+
+CREATE TABLE endereço(
+    cidade VARCHAR(100),
+    regiao  VARCHAR(100),
+    numero_residencia VARCHAR(100),
+    rua_avenida VARCHAR(100)
+);
+
 
 CREATE PROCEDURE livraria_web.CADASTRO_USUARIO (IN p_nome VARCHAR(100), IN p_senha VARCHAR(255), IN p_email VARCHAR(100))
 BEGIN
