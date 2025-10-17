@@ -11,20 +11,8 @@ CREATE TABLE mydatabase.usuarios (
 
 select * from mydatabase.usuarios;
 
-
 alter table mydatabase.usuarios
 drop column endereco;
-
-
-
-
-
-/*
-galera eu nao sei como fazer isso, nos temos que fazer uma tabela que junta o usuario com os produtos comprados mas
-o dificil é se o usuario comprar mais de um produto ou comprar produtos diferentes, tem aquelas normas f1 f2 sla, temos que dar uma olhada nisso
-se não por isso o resto ta praticamente ai. é claro seria bom dar uma revisada
--osaka
-*/
 
 select * from mydatabase.usuarios;
 
@@ -43,22 +31,8 @@ CREATE TABLE mydatabase.produtos (
 
 select * from mydatabase.produtos;
 
-/*aqui vamos colocar as informações do produto, preco e nome. lembre de depois colocar as informações de cada produto aqui, comecem pequeno por motivos de teste*/
-
-
-
-/*FALTA A TABELA QUE JUNTA:
-O ID DO CLIENTE LOGADO
-OS PRODUTOS QUE ELE COMPROU
-A QUANTIDADE DE CADA
-O PREÇO TOTAL DA COMPRA 
-
-
-seria bom criar uma view fazer*/
-
-
-create table vendas (
-    id_venda int auto_increment primary key,
+create table compra (
+    id_compra int auto_increment primary key,
     -- inserir data de venda e automatizar sua atualização
     id int,
     id_produto int,
@@ -66,12 +40,24 @@ create table vendas (
     FOREIGN KEY (id) REFERENCES users(id)
 );
 
+create table item_compra(
+    id_item_compra int auto_increment primary key,
+    quantidade int,
+    id_compra int,
+    FOREIGN KEY (id_compra) REFERENCES compra(id_compra)
+);
+create view mydatabase.pegar_usuario_id as 
+pe_email varchar(100),
+pe_senha varchar(200),
+begin
+select id from
+mydatabase.usuarios where
+pe_email = u.email and 
+pe_senha = u.senha ,
+end;
 
-
-create table item_vendas
-
-
-
-create view 
-
+create procedure if not exists mydatabase.cadastro_venda(id int, data_compra date)
+begin 
+insert into mydatabase.compra(id int, data_compra date)
+values(cv_usuario_id, cv_data_compra)
 
