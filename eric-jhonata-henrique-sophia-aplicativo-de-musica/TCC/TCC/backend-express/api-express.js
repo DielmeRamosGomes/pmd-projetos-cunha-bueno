@@ -74,7 +74,7 @@ app.get('/listarprodutos', (req, res) => {
   //res.json(lista_produtos);
   usarConexao()
     .then(connection => {
-      return connection.query('SELECT * FROM estoque.produtos');
+      return connection.query('SELECT * FROM mydatabase.produtos');
     })
     .then(([rows]) => {
       res.json(rows);
@@ -85,6 +85,26 @@ app.get('/listarprodutos', (req, res) => {
     });
 });
  
+app.post('/listaidusuario', (req, res) => {
+  let { email, senha} = req.body;
+if ( !email|| !senha) {
+    return res.status(400).json({ message: 'Todos os campos são obrigatórios!' });
+  }
+  usarConexao()
+    .then(connection => {
+      return connection.query('call mydatabase.pegar_usuario_id(email, senha);',
+      [ email, senha]
+    );
+    })
+    .then(([rows]) => {
+      res.json(rows);
+    })
+    .catch(error => {
+      console.error('Erro ao listar id:', error);
+      res.status(500).json({ error: 'Erro ao listar id' });
+    });
+});
+
 app.post('/cadastrarproduto', async (req, res) => {
   let { nome, preco, descricao, urlimagem } = req.body;
  
