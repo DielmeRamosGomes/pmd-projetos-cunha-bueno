@@ -61,12 +61,14 @@ create procedure mydatabase.pegar_usuario_id (pe_email varchar(100), pe_senha va
 select
     id
 from
-    mydatabase.usuarios
+    mydatabase.usuarios as u
 where
     pe_email = u.email
     and pe_senha = u.senha;
 
 end;
+
+drop procedure mydatabase.pegar_usuario_id;
 
 create procedure if not exists mydatabase.cadastro_venda (id int, data_compra date) begin
 insert into

@@ -92,8 +92,8 @@ if ( !email|| !senha) {
   }
   usarConexao()
     .then(connection => {
-      return connection.query('call mydatabase.pegar_usuario_id(email, senha);',
-      [ email, senha]
+      return connection.query('call mydatabase.pegar_usuario_id(?, ?);',
+      [email, senha]
     );
     })
     .then(([rows]) => {

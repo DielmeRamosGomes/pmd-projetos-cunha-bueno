@@ -120,7 +120,7 @@
 </head>
 
 <body>
-  <form action="submit.php" method="post" id="form">
+  <form action="./index.html" id="form">
     <div class="container">
       <table>
         <tr>
@@ -139,7 +139,7 @@
 
 
             <br>
-           <!-- <a href="index.html">
+            <!-- <a href="index.html">
               <button id="botao1" type="submit" disabled onclick="permitido();">✨ Enviar ✨</button>
             </a> -->
 
@@ -152,10 +152,11 @@
       <img src="img/osakatime3.jpg" alt="Banner esquerdo">
     </div>
   </form>
-  
+
 
   <script>
     //document.getElementById("botao1").disabled = true;
+    const respostaId = null;
 
     addEventListener("input", function () {
       var nome = document.getElementById("inputnome").value;
@@ -190,8 +191,39 @@
         },
         body: JSON.stringify(usuario)
       });
+
+      fetchId(usuario.email, usuario.senha);
+
     });
 
+    async function fetchId(email, senha) {
+      const login = {
+        email: email,
+        senha: senha
+      }
+
+      try {
+        respostaId = await fetch('http://localhost:3000/listaidusuario', {
+          method: 'POST',
+          headers: {
+            'Content-type': 'application/json'
+          },
+          body: JSON.stringify(login)
+        });
+        if (!respostaId.ok) {
+          const erroData = await respostaId.json(); // Tenta ler o corpo do erro (se houver)
+          throw new Error(`Erro HTTP! Status: ${respostaId.status} - Mensagem: ${erroData.message || 'Desconhecida'}`);
+        }
+
+      } catch (error) {
+        console.log(`Erro: ${error}`);
+        pLivroCadastrado.textContent = `Erro`;
+      }
+
+      console.log(respostaId);
+    }
+
+    
   </script>
 
   <script src="js/script.js"></script>
