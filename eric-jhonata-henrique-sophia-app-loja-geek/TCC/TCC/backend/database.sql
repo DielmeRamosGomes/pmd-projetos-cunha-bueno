@@ -40,21 +40,27 @@ from
     mydatabase.produtos;
 
 create table
-    compra (
+    mydatabase.compra (
         id_compra int auto_increment primary key,
-        -- inserir data de venda e automatizar sua atualização
-        id int,
-        id_produto int,
-        FOREIGN KEY (id_produto) REFERENCES produtos (id_produto),
-        FOREIGN KEY (id) REFERENCES users (id)
+        id_usuario int not null,
+        data_compra date,
+        FOREIGN KEY (id_usuario) REFERENCES mydatabase.usuarios (id)
     );
 
+drop table mydatabase.usuarios;
+drop table mydatabase.produtos;
+drop table mydatabase.compra;
+drop table mydatabase.item_compra;
+drop procedure mydatabase.cadastro_compra;
+
 create table
-    item_compra (
+    mydatabase.item_compra (
         id_item_compra int auto_increment primary key,
-        quantidade int,
-        id_compra int,
-        FOREIGN KEY (id_compra) REFERENCES compra (id_compra)
+        quantidade int not null,
+        id_compra int not null,
+        id_produto int not null,
+        FOREIGN KEY (id_compra) REFERENCES mydatabase.compra (id_compra),
+        FOREIGN KEY (id_produto) REFERENCES mydatabase.produtos (id_produto)
     );
 
 create procedure mydatabase.pegar_usuario_id (pe_email varchar(100), pe_senha varchar(200)) begin
@@ -70,13 +76,23 @@ end;
 
 drop procedure mydatabase.pegar_usuario_id;
 
-create procedure if not exists mydatabase.cadastro_venda (id int) begin
+create procedure if not exists mydatabase.cadastro_compra(id int) begin
 insert into
-    mydatabase.compra (id int, data_compra date)
+    mydatabase.compra (id_usuario, data_compra)
 values
-    (cv_usuario_id, CURDATE())
+    (cv_usuario_id, CURDATE ());
 
+end;
 
+/*procedure item de venda */
+create procedure mydatabase.cadastro_item_compra (
+    ic_quantidade int,
+    ic_id_compra int,
+    ic_id_produto int
+) begin
+insert into
+    mydatabase.item_compra (quantidade, id_compra, id_produto)
+values
+    (ic_quantidade, ic_id_compra, ic_id_produto);
 
-
-
+end;
