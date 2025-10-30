@@ -70,8 +70,13 @@ end;
 
 drop procedure mydatabase.pegar_usuario_id;
 
-create procedure if not exists mydatabase.cadastro_venda (id int, data_compra date) begin
+create procedure if not exists mydatabase.cadastro_venda (id int) begin
 insert into
     mydatabase.compra (id int, data_compra date)
 values
-    (cv_usuario_id, cv_data_compra)
+    (cv_usuario_id, CURDATE())
+
+
+
+
+
