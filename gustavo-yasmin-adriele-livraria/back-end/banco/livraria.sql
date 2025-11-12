@@ -144,7 +144,5 @@ VALUES
         Infantojuvenil,
         rick Riordan,
     )
-select
-    *
-from
-    livraria_web.usuarios;
+    
+select * from livraria_web.usuarios;

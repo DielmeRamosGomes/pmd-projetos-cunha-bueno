@@ -32,60 +32,59 @@
   </div>
 
   <script>
-  const form = document.querySelector("form");
-  const btnCadastrar = document.querySelector("#btn-cadastrar");
+    const form = document.querySelector("form");
+    const btnCadastrar = document.querySelector("#btn-cadastrar");
 
-  // Função para validar senhas iguais
-  form.addEventListener("submit", (e) => {
-    const senha = document.getElementById("senha").value;
-    const confirmaSenha = document.getElementById("confirmaSenha").value;
+    // Função para validar senhas iguais
+    form.addEventListener("submit", (e) => {
+      const senha = document.getElementById("senha").value;
+      const confirmaSenha = document.getElementById("confirmaSenha").value;
 
-    if (senha !== confirmaSenha) {
-      e.preventDefault();
-      alert("As senhas não coincidem!");
+      if (senha !== confirmaSenha) {
+        e.preventDefault();
+        alert("As senhas não coincidem!");
+      }
+    });
+
+    // Função que pega a data atual formatada (aaaa-mm-dd)
+    function dataCadastro() {
+      const dataAtual = new Date();
+      const dia = String(dataAtual.getDate()).padStart(2, "0");
+      const mes = String(dataAtual.getMonth() + 1).padStart(2, "0");
+      const ano = dataAtual.getFullYear();
+      return `${ano}-${mes}-${dia}`;
     }
-  });
 
-  // Função que pega a data atual formatada (aaaa-mm-dd)
-  function dataCadastro() {
-    const dataAtual = new Date();
-    const dia = String(dataAtual.getDate()).padStart(2, "0");
-    const mes = String(dataAtual.getMonth() + 1).padStart(2, "0");
-    const ano = dataAtual.getFullYear();
-    return `${ano}-${mes}-${dia}`;
-  }
+    // Quando clicar no botão "Cadastrar"
+    btnCadastrar.addEventListener("click", async (event) => {
+      event.preventDefault(); // impede o formulário de recarregar a página
 
-  // Quando clicar no botão "Cadastrar"
-  btnCadastrar.addEventListener("click", async (event) => {
-    event.preventDefault(); // impede o formulário de recarregar a página
+      const formData = new FormData(form);
+      const usuario = {
+        nome: formData.get("nome"),
+        senha: formData.get("senha"),
+        email: formData.get("email")
+      };
 
-    const formData = new FormData(form);
-    const usuario = {
-      nome: formData.get("nome"),
-      email: formData.get("email"),
-      senha: formData.get("senha"),
-      data_cadastro: dataCadastro(),
-    };
+      console.log("Enviando usuário:", usuario);
 
-    console.log("Enviando usuário:", usuario);
+      try {
+        const resposta = await fetch("http://localhost:3000/cadastrarusuario", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(usuario)
+        });
 
-    try {
-      const resposta = await fetch("http://localhost:3000/cadastrarusuario", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(usuario),
-      });
-
-      const dados = await resposta.json();
-      alert(dados.mensagem || "Usuário cadastrado com sucesso!");
-    } catch (erro) {
-      console.error("Erro ao cadastrar:", erro);
-      alert("Erro ao cadastrar usuário. Verifique o servidor!");
-    }
-  });
-</script>
+        const dados = await resposta.json();
+        alert(dados.mensagem || "Usuário cadastrado com sucesso!");
+      } catch (erro) {
+        console.error("Erro ao cadastrar:", erro);
+        alert("Erro ao cadastrar usuário. Verifique o servidor!");
+      }
+    });
+  </script>
 
 </body>
 

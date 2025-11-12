@@ -14,7 +14,7 @@ const app = express();
 // use middleware cors
 app.use(cors(
   {
-    origin: 'http://127.0.0.1:5500/'
+    origin: 'http://127.0.0.1:5500'
   })
 );
  
@@ -119,5 +119,5 @@ const lista_todos_produtos = () => {
  
 const PORT = 3000;
 app.listen(PORT, () => {
-  console.log(`Servidor rodando: http://localhost:${PORT}/listarprodutos`);
+  console.log(`Servidor rodando: http://localhost:${PORT}/`);
 });
