@@ -1,13 +1,9 @@
 class Usuario {
-    constructor( nome, email, senha, data_cadastro) {
+    constructor( nome, email, senha) {
         this.nome = nome;
         this.email = email;
         this.senha = senha;
-        this.data_cadastro = data_cadastro;
-        
     }
- 
-    
  
     getNome() {
         return this.nome;
@@ -19,10 +15,6 @@ class Usuario {
  
     getSenha() {
         return this.senha;
-    }
- 
-    getDataCadastro() {
-        return this.data_cadastro;
     }
  
 }

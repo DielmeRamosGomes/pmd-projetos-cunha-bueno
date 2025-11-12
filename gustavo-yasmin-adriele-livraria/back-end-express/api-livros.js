@@ -21,7 +21,7 @@ app.use(cors(
 // Middleware para analisar o corpo da requisição como JSON
 app.use(express.json());
  
-let lista_produtos = [];
+let lista_livros = [];
 let lista_usuarios = [];
  
 async function usarConexao() {
@@ -47,20 +47,19 @@ app.get('/listarusuarios', (req, res) => {
 });
  
 app.post('/cadastrarusuario', async (req, res) => {
-  let {nome, email, senha, data_cadastro} = req.body;
+  let {nome, senha, email} = req.body;
  
-  if (!nome || !email || !senha || !data_cadastro) {
+  if (!nome || !email || !senha) {
     return res.status(400).json({ message: 'Todos os campos são obrigatórios!' });
   }
  
-  let novoUsuario = new Usuario( nome, email, senha, data_cadastro);
- 
+  let novoUsuario = new Usuario(nome, email, senha);
   lista_usuarios.push(novoUsuario);
  
   try {
     const connection = await usarConexao();
-    const [rows] = await connection.query('INSERT INTO livraria_web.usuarios(nome, email, senha, data_cadastro) VALUES (?, ?, ?, ?);',
-      [ nome, email, senha, data_cadastro]
+    const [rows] = await connection.query('CALL livraria_web.CADASTRO_USUARIO(?, ?, ?);',
+      [nome, senha, email]
     );
     console.log(rows);
     connection.release();
