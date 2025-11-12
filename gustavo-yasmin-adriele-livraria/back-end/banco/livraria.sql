@@ -58,7 +58,7 @@ END IF;
 INSERT INTO
     livraria_web.usuarios (nome, email, senha, data_cadastro)
 VALUES
-    (p_nome, p_email, p_senha, CURDATE());
+    (p_nome, p_email, p_senha, CURDATE ());
 
 END;
 
@@ -143,6 +143,15 @@ VALUES
         antasia e Ficção Científica,
         Infantojuvenil,
         rick Riordan,
-    )
+    ) 
     
+create procedure if not exists livraria_web.pegar_usuario_id(
+    pe_email varchar(100),
+    pe_senha varchar(200)) 
+    begin
+    select id from livraria_web.usuarios as u
+        where
+            pe_email = u.email and pe_senha = u.senha;
+    end;
+
 select * from livraria_web.usuarios;
