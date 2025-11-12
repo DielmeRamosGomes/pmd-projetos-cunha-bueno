@@ -20,10 +20,10 @@ CREATE TABLE
         nome_livro VARCHAR(100) NOT NULL,
         genero VARCHAR(100) NOT NULL,
         autor VARCHAR(100),
-        capa_url VARCHAR(255),
+        capa_url VARCHAR(500),
         editora VARCHAR(100),
         data_publicacao DATE,
-        descricao VARCHAR(100)
+        descricao VARCHAR(500)
     );
 
 CREATE TABLE
@@ -62,96 +62,28 @@ VALUES
 
 END;
 
-INSERT INTO
-    livraria_web.LIVROS (
-        valor,
-        nome_produto,
-        genero_categoria,
-        autor,
-        capa_url
-    )
-VALUES
-    (
-        52.90,
-        'mulher no escuro',
-        'Thriller, Suspense',
-        'Raphael Montes',
-        'https://www.minhavidaliteraria.com.br/2019/07/10/resenha-uma-mulher-no-escuro-raphael-montes/'
-    );
-
-INSERT INTO
-    livraria_web.LIVROS (
-        valor,
-        nome_produto,
-        genero_categoria,
-        autor,
-        capa_url
-    )
-VALUES
-    (
-        69.90,
-        'sol e as estrelas',
-        ' Fantasia e Ficção Científica, Infantojuvenil',
-        'Rick Riordan',
-        'img/Capa-O-Sol-e-a-Estrela-1.jpg'
-    ),
-    (
-        59.90,
-        'o calice dos deuses',
-        'Fantasia e Ficção Científica, Infantojuvenil',
-        'Rick Riordan',
-        'img/CALICE DOS DEUSES.jpg'
-    );
-
-INSERT INTO
-    livraria_web.usuarios (nome, email, senha, tipo_usuario)
-VALUES
-    (
-        'jose de lima',
-        'joao@email.com',
-        '512346',
-        'cliente'
-    );
-
-INSERT INTO
-    livraria_web.USUARIOS (nome, email, senha, tipo_usuario)
-INSERT INTO
-    livraria_web.usuarios (nome, email, senha, tipo_usuario)
-VALUES
-    (
-        'eliane teodoro',
-        'elianelixto@email',
-        '1234567',
-        'cliente'
-    )
-drop table if exists livraria_web.usuarios;
-
-drop table if exists livraria_web.LIVROS;
-
-INSERT INTO
-    livraria_web.livros (
-        valor,
-        nome_produto,
-        genero_categoria,
-        autor,
-        capa_url
-    )
-VALUES
-    (
-        50,
-        90 mar de montros,
-        antasia e Ficção Científica,
-        Infantojuvenil,
-        rick Riordan,
-    ) 
-    
 create procedure if not exists livraria_web.pegar_usuario_id(
     pe_email varchar(100),
     pe_senha varchar(200)) 
     begin
-    select id from livraria_web.usuarios as u
+    select u.id from livraria_web.usuarios as u
         where
             pe_email = u.email and pe_senha = u.senha;
     end;
+
+create procedure if not exists livraria_web.cadastrar_livro(
+    cl_valor DECIMAL(10, 2),
+    cl_nome_livro VARCHAR(100),
+    cl_genero VARCHAR(100),
+    cl_autor VARCHAR(100),
+    cl_capa_url VARCHAR(500),
+    cl_editora VARCHAR(100),
+    cl_data_publicacao DATE,
+    cl_descricao VARCHAR(500)
+)
+begin
+    insert into livraria_web.livros(valor, nome_livro, genero, autor, capa_url, editora, data_publicacao, descricao)
+        values(cl_valor, cl_nome_livro, cl_genero, cl_autor, cl_capa_url, cl_editora, cl_data_publicacao, cl_descricao);
+end;
 
 select * from livraria_web.usuarios;

@@ -71,7 +71,6 @@ app.post('/cadastrarusuario', async (req, res) => {
 });
 
 app.get('/listarlivros', (req, res) => {
-  //res.json(lista_produtos);
   usarConexao()
     .then(connection => {
       return connection.query('SELECT * FROM livraria_web.livros');
@@ -83,31 +82,6 @@ app.get('/listarlivros', (req, res) => {
       console.error('Erro ao listar livros:', error);
       res.status(500).json({ error: 'Erro ao listar livros' });
     });
-});
-
-app.post('/cadastrarlivros', async (req, res) => {
-  let { } = req.body;
-
-  if (!_id_produto || !_nome || !_descricao || !_id_vendedor || !_data_cadastro || _ativo === undefined) {
-    return res.status(400).json({ message: 'Todos os campos são obrigatórios!' });
-  }
-
-  let novoProduto = new Produto(_id_produto, _nome, _descricao, _id_vendedor, _data_cadastro, _ativo);
-
-  lista_produtos.push(novoProduto);
-
-  try {
-    const connection = await usarConexao();
-    const [rows] = await connection.query('INSERT INTO estoque.produtos(id_produto, nome, descricao, id_vendedor, data_cadastro, ativo) VALUES (?, ?, ?, ?, ?, ?);',
-      [_id_produto, _nome, _descricao, _id_vendedor, _data_cadastro, _ativo]
-    );
-    console.log(rows);
-    connection.release();
-    res.status(201).json({ message: 'Produto cadastrado com sucesso!', produto: novoProduto });
-  } catch (error) {
-    console.error('Erro ao inserir produto:', error);
-    res.status(500).json({ error: 'Erro ao inserir o produto no banco de dados' });
-  }
 });
 
 app.post('/listaidusuario', (req, res) => {
