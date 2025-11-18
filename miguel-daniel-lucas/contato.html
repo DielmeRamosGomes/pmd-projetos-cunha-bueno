@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contato - Portal Escola</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="shortcut icon" href="img/cunha.jpg" type="image/x-icon">
+<link rel="icon" href="img/cunha.jpg" type="image/png">
+</head>
+<body>
+    <div class="grid-container">
+        <header class="header">
+            <img src="img/logo.png" class="logo" alt="Logo da Escola">
+            <h6>&</h6>
+            <img src="img/vozes.png" class="logo" alt="Vozes">
+            <h3>Em parceria com</h3>
+            <img src="img/cunha.jpg" class="logocunha" alt="Grêmio Cunha">
+        </header>
+
+        <nav class="nav">
+            <div class="navbar">
+                <button class="menu-toggle" aria-label="Abrir Menu">
+                    <span class="hamburger-icon"></span>
+                </button>
+                <ul class="navbar-links">
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="noticias.html">Notícias</a></li>
+                    <li><a href="eventos.html">Eventos</a></li>
+                    <li><a href="contato.html">Contato</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <main class="main">
+            <div class="pagina-conteudo">
+                <h1>📞 Entre em Contato</h1>
+                
+                <div class="contato-container">
+                    <div class="info-contato">
+                        <h2>📍 Informações de Contato</h2>
+                        
+                        <div class="contato-item">
+                            <div class="contato-icone">🏫</div>
+                            <div class="contato-info">
+                                <h3>Escola</h3>
+                                <p><strong>Endereço:</strong> Rua das Flores, 123 - Centro</p>
+                                <p><strong>Telefone:</strong> (11) 3456-7890</p>
+                                <p><strong>Email:</strong> contato@escola.com.br</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contato-item">
+                            <div class="contato-icone">👥</div>
+                            <div class="contato-info">
+                                <h3>Grêmio Estudantil</h3>
+                                <p><strong>Local:</strong> Sala do Grêmio - Pátio Central</p>
+                                <p><strong>Email:</strong> gremio@escola.com.br</p>
+                                <p><strong>Instagram:</strong> @gremioescola</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contato-item">
+                            <div class="contato-icone">⏰</div>
+                            <div class="contato-info">
+                                <h3>Horários de Atendimento</h3>
+                                <p><strong>Secretaria:</strong> Segunda a Sexta, 7h às 18h</p>
+                                <p><strong>Grêmio:</strong> Terças e Quintas, 15h às 17h</p>
+                                <p><strong>Direção:</strong> Com agendamento prévio</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="formulario-contato">
+                        <h2>✉️ Envie uma Mensagem</h2>
+                        <form class="form-contato">
+                            <div class="campo-duplo">
+                                <div class="campo">
+                                    <label for="nome">Nome Completo *</label>
+                                    <input type="text" id="nome" name="nome" required>
+                                </div>
+                                <div class="campo">
+                                    <label for="turma">Turma/Ano</label>
+                                    <input type="text" id="turma" name="turma">
+                                </div>
+                            </div>
+                            
+                            <div class="campo">
+                                <label for="email">Email *</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            
+                            <div class="campo">
+                                <label for="destinatario">Destinatário *</label>
+                                <select id="destinatario" name="destinatario" required>
+                                    <option value="">Selecione...</option>
+                                    <option value="gremio">Grêmio Estudantil</option>
+                                    <option value="direcao">Direção da Escola</option>
+                                    <option value="secretaria">Secretaria</option>
+                                    <option value="professor">Corpo Docente</option>
+                                </select>
+                            </div>
+                            
+                            <div class="campo">
+                                <label for="assunto">Assunto *</label>
+                                <input type="text" id="assunto" name="assunto" required>
+                            </div>
+                            
+                            <div class="campo">
+                                <label for="mensagem">Mensagem *</label>
+                                <textarea id="mensagem" name="mensagem" rows="6" required></textarea>
+                            </div>
+                            
+                            <button type="submit" class="botao-enviar">Enviar Mensagem</button>
+                        </form>
+                    </div>
+                </div>
+                
+                <div class="mapa-localizacao">
+                    <h2>🗺️ Nossa Localização</h2>
+                    <div class="mapa-placeholder">
+                        <div class="mapa-info">
+                            <p>📍 <strong>Escola Estadual</strong></p>
+                            <p>Rua das Flores, 123 - Centro</p>
+                            <p>São Paulo - SP, 01234-567</p>
+                            <p class="dica">💡 <em>Use o GPS para chegar até nós!</em></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <!-- Rodapé igual ao index.html -->
+        </footer>
+    </div>
+</body>
+</html>
