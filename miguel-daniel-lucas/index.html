@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal Escola</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="shortcut icon" href="img/cunha.jpg" type="image/x-icon">
+<link rel="icon" href="img/cunha.jpg" type="image/png">
+    <style>
+        .header h6 {
+            font-size: 40px;
+            margin: 0;
+        }
+        .header h3 {
+            font-size: 16px;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="grid-container">
+        <!-- Cabeçalho -->
+        <header class="header">
+            <img src="img/logo.png" class="logo" alt="Logo da Escola">
+            <h6>&</h6>
+            <img src="img/vozes.png" class="logo" alt="Projeto Vozes Estudantis">
+            <h3>Em parceria com</h3>
+            <img src="img/cunha.jpg" class="logocunha" alt="Grêmio Estudantil">
+        </header>
+
+        <!-- Menu de Navegação -->
+        <nav class="nav">
+            <div class="navbar">
+                <button class="menu-toggle" aria-label="Abrir Menu" aria-expanded="false">
+                    <span class="hamburger-icon"></span>
+                </button>
+                <ul class="navbar-links">
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="noticias.html">Notícias</a></li>
+                    <li><a href="eventos.html">Eventos</a></li>
+                    <li><a href="contato.html">Contato</a></li>
+                </ul>
+            </div>
+        </nav>
+
+
+        <!-- Conteúdo principal -->
+        <main class="main">
+            <div class="conteudo-principal">
+                <h2>📰 Últimas Novidades</h2>
+                
+                <div class="noticia-destaque">
+                    <h3>📢 Avisos Importantes</h3>
+                    <div class="botoes-categorias">
+                        <a href="cardapio.html" class="botao-categoria">🍽️ Cardápio da Semana</a>
+                        <a href="eventos.html" class="botao-categoria">📅 Próximos Eventos</a>
+                        <a href="avisos.html" class="botao-categoria">📋 Avisos da Direção</a>
+                    </div>
+                </div>
+
+                <div class="novidades-gremio">
+                    <h3>🎯 Novidades do Grêmio</h3>
+                    <div class="botoes-categorias">
+                        <a href="votacoes.html" class="botao-categoria">🗳️ Votações em Andamento</a>
+                        <a href="projetos.html" class="botao-categoria">💡 Projetos do Grêmio</a>
+                        <a href="reunioes.html" class="botao-categoria">📋 Próximas Reuniões</a>
+                    </div>
+                </div>
+
+                <!-- Nova seção adicionada -->
+                <div class="destaque-rapido">
+                    <h3>⚡ Destaque da Semana</h3>
+                    <div class="destaque-conteudo">
+                        <p>🇧🇷 <strong>A cantina 'ta que ta'!</strong> - Strogonoff de carne hoje!
+                        <a href="eventos.html" class="botao-destaque">Saiba Mais</a>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Aside com Login -->
+        <aside class="aside">
+            <div class="login-container">
+                <img src="img/login.gif" width="60" alt="Ícone de Login" class="gif-login">
+                
+                <form method="POST" action="login.php" class="form-login">
+                    <div class="campo">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="campo">
+                        <label for="senha">Senha:</label>
+                        <input type="password" id="senha" name="senha" required>
+                    </div>
+                    
+                    <input type="submit" value="Entrar" class="botao-login">
+                </form>
+                
+                <a href="cadastro.php" class="cadastro-link">📝 Cadastre-se</a>
+                
+                <div class="login-info">
+                    <p>💡 <small>Acesso para alunos e funcionários</small></p>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Rodapé -->
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Portal da Escola</h4>
+                    <p>Central de informações e novidades para alunos, professores e funcionários.</p>
+                    <p><strong>Parceria:</strong> Grêmio Estudantil</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Contato</h4>
+                    <p>📧 e046279a@educacao.sp.gov.br</p>
+                    <p>📞 (11) 2741-6339</p>
+                    <p>📍 Rua Andrea Feliciani 501</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Siga-nos</h4>
+                    <p>📸 <a href="https://www.instagram.com/escolacunhabueno" target="_blank" title="https://www.instagram.com/escolacunhabueno">escolacunhabueno</a><br></p>
+                    <p>📸 <a href="https://www.instagram.com/vozes_da_juventude.2025" target="_blank" title="https://www.facebook.com/vozes_da_juventude.2025">vozes_da_juventude.2025</a><br></p>
+                    <p>📘 <a href="https://www.facebook.com/cunhabueno" target="_blank" title="https://www.instagram.com/cunhabueno">Cunha Bueno</a></p>
+                    
+                    
+                    
+                    <!-- <div class="social-links">
+                        <a href="#" aria-label="Instagram">
+                            <img src="img/instagram.png" alt="Siga no Instagram" class="social-icon">
+                        </a>
+                        <a href="#" aria-label="WhatsApp">
+                            <img src="img/whatsapp.png" alt="Entre em contato via WhatsApp" class="social-icon">
+                        </a>
+                    </div> -->
+                    
+                    
+                    
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footer-divider"></div>
+                <p>&copy; 2024 Portal da Escola. Todos os direitos reservados.</p>
+                <p>Desenvolvido em parceria com o Grêmio Estudantil</p>
+            </div>
+        </footer>
+    </div>
+    
+    <script>
+        document.querySelector('.menu-toggle').addEventListener('click', function() {
+            const navbarLinks = document.querySelector('.navbar-links');
+            const isExpanded = this.getAttribute('aria-expanded') === 'true';
+            
+            navbarLinks.classList.toggle('active');
+            this.setAttribute('aria-expanded', !isExpanded);
+        });
+    </script>
+</body>
+</html>
