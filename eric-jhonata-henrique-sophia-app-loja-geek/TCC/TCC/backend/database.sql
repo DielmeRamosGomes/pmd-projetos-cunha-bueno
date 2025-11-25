@@ -48,9 +48,13 @@ create table
     );
 
 drop table mydatabase.usuarios;
+
 drop table mydatabase.produtos;
+
 drop table mydatabase.compra;
+
 drop table mydatabase.item_compra;
+
 drop procedure mydatabase.cadastro_compra;
 
 create table
@@ -76,7 +80,7 @@ end;
 
 drop procedure mydatabase.pegar_usuario_id;
 
-create procedure if not exists mydatabase.cadastro_compra(id int) begin
+create procedure if not exists mydatabase.cadastro_compra (id int) begin
 insert into
     mydatabase.compra (id_usuario, data_compra)
 values
@@ -96,3 +100,18 @@ values
     (ic_quantidade, ic_id_compra, ic_id_produto);
 
 end;
+
+create procedure if not exists mydatabase.cadastrar_produto (
+        cp_nome VARCHAR(255),
+        cp_preco decimal(10, 2),
+        cp_descricao VARCHAR(300),
+        cp_urlimagem varchar(255)
+) 
+begin
+    insert into mydatabase.produtos(nome, preco, descricao, urlimagem)
+        values(cp_nome, cp_preco, cp_descricao, cp_urlimagem);
+end;
+
+select * from mydatabase.produtos;
+
+call mydatabase.cadastrar_produto("plushie osaka", 200.50, "boneco", "eric-jhonata-henrique-sophia-app-loja-geek\TCC\TCC\carrinho_de_compras\img\osaka.jfif");
