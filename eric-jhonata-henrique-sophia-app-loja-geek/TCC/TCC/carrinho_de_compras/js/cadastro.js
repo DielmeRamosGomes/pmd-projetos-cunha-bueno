@@ -6,12 +6,12 @@ addEventListener("input", function (event) {
   var conteudoemail = document.getElementById("inputemail").value;
   var senha = document.getElementById("senha").value;
 
-
+/*
   if (nome && conteudoemail && senha) {
     document.getElementById("botao1").disabled = false;
   } else {
     document.getElementById("botao1").disabled = true;
-  }
+  }*/
 });
 
 const btn = document.querySelector('#btn');

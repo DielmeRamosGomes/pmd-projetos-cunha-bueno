@@ -1,42 +1,45 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Carrinho de Compras</title>
-
-
     <link rel="stylesheet" href="css/estilo.css">
+</head>
+
+<body>
     <a href='cadastro.html'><button id="botaocadastro">cadastrar</button></a>
 
     <div id="cartModal" class="modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="cartTitle">
-    <div class="modal__overlay" data-close></div>
+        <div class="modal__overlay" data-close></div>
 
-    <div class="modal__dialog" role="document">
-        <button class="modal__close" aria-label="Fechar" data-close>&times;</button>
+        <div class="modal__dialog" role="document">
+            <button class="modal__close" aria-label="Fechar" data-close>&times;</button>
 
-        <div class="carrinho">
-        <h2 id="cartTitle">Carrinho de Compras</h2>
-        <ul class="itens-carrinho"></ul>
-        <div class="total">Total: R$ <span>0.00</span></div>
-        <button class="finalizar">Finalizar Compra</button>
+            <div class="carrinho">
+                <h2 id="cartTitle">Carrinho de Compras</h2>
+                <ul class="itens-carrinho"></ul>
+                <div class="total">Total: R$ <span>0.00</span></div>
+                <button class="finalizar">Finalizar Compra</button>
+            </div>
         </div>
-    </div>
     </div>
 
     <!--área do carrinho, para icone de botao personalizavel após apertar botão abre modal -->
-    <button id="openCart" class="icon-cart-btn" aria-label="Abrir carrinho" style="background:none;border:none;padding:0;">
-    <img src="img/carrinho-de-compras.png" alt="Carrinho" style="width:40px;height:auto;display:block;cursor:pointer;">
+    <button id="openCart" class="icon-cart-btn" aria-label="Abrir carrinho"
+        style="background:none;border:none;padding:0;">
+        <img src="img/carrinho-de-compras.png" alt="Carrinho"
+            style="width:40px;height:auto;display:block;cursor:pointer;">
     </button>
-</head>
-<body>
+
     <div class="box">
         <img src="img/logo-removebg-preview.png" width="350" height="300">
     </div>
 
 
     <!--área de produtos, perceba a diferença entre div class produtos e produto segregamos para entendimento de um grupo e de itens isolados , alteramos os dataid para ordenação-->
-    <!--para melhor entendimento fizemos as identações das marcações segragadas para uma leitura mais fácil-->  
+    <!--para melhor entendimento fizemos as identações das marcações segragadas para uma leitura mais fácil-->
     <div class="produtos">
         <!--<div class="produto" data-id="1" data-nome="plushie osaka" data-preco="200.00">
             <table>
@@ -203,5 +206,5 @@
     <!--programação do carrinho-->
     <script src="js/script.js"></script>
 </body>
-</html>
 
+</html>

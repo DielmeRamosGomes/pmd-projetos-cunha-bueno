@@ -120,3 +120,9 @@ update mydatabase.produtos as p set p.urlimagem = "img/osaka.jfif"
     where p.id_produto = 1;
 
 select * from mydatabase.usuarios;
+
+call mydatabase.cadastrar_produto("plushie sakaki", 400, "Essa é a Sakaki, a menina quieta que é considerada a mais legal da escola, Mas por dentro ela é um amor de pessoa que ama animais. Esse plushie feito de algodão tem 25 centimetros de altura e tem altissima qualidade.", "img/sakaki.jfif");
+
+
+
+

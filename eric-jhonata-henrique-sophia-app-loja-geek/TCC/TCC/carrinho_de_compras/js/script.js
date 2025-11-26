@@ -64,7 +64,7 @@ let ID =
       const produtoCard = botao.closest('.produto');
       if (!produtoCard) return;
 
-      const id = produtoCard.dataset.id;
+      const id = produtoCard.dataset.id_produto;
       const preco = Number(produtoCard.dataset.preco);
       const nome = (produtoCard.querySelector('h2')?.textContent || produtoCard.dataset.nome || '').trim();
 
