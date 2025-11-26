@@ -114,7 +114,7 @@ end;
 
 select * from mydatabase.produtos;
 
-call mydatabase.cadastrar_produto("plushie osaka", 200.50, "boneco", "eric-jhonata-henrique-sophia-app-loja-geek\TCC\TCC\carrinho_de_compras\img\osaka.jfif");
+call mydatabase.cadastrar_produto("plushie osaka", 200.50, "boneco", "img/osaka.jfif");
 
 update mydatabase.produtos as p set p.urlimagem = "img/osaka.jfif"
     where p.id_produto = 1;
