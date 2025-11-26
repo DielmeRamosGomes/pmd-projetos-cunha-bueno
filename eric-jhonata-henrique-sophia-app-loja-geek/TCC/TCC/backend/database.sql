@@ -125,4 +125,15 @@ call mydatabase.cadastrar_produto("plushie sakaki", 400, "Essa é a Sakaki, a me
 
 
 
+call mydatabase.cadastrar_produto("plushie chiyo", 79.90, "pirralhinha", "img/chiyochan.jpg");
+
+call mydatabase.cadastrar_produto("plushie tomo", 200.50, "barraqueira", "img/tomo.jpg");
+
+
+
+update mydatabase.produtos as p set p.urlimagem = "img/chiyochan.jpg"
+    where p.id_produto = 2;
+
+    
+call mydatabase.cadastrar_produto("plushie yomi", 200.50, "Essa é a Yomi, a Yomi é a melhor amiga da Tomo ela gostando ou não, ela é a mais matura do grupo, sempre tentando impor ordem no grupo quando se metem em encrencas. Ela estuda junto da tomo desde os anos primarios. A Yomi esta sempre tentando fazer uma dieta mas sempre falha. Esse plushie mede 21 cm e pesa um pouco mais que os outros por motivos desconhecidos", "img/yomi.jfif");
 

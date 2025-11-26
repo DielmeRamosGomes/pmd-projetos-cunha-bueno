@@ -8,6 +8,7 @@ let ID =
 
   document.addEventListener('DOMContentLoaded', () => {
     // ===== Seletores base
+    
     const botoesAdicionar = document.querySelectorAll('.adicionar');
     const listaCarrinho = document.querySelector('.itens-carrinho');
     const totalElemento = document.querySelector('.total span');
@@ -60,13 +61,16 @@ let ID =
 
     // ===== Lógica do carrinho
     function adicionarAoCarrinho(event) {
+      console.log("hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh");
       const botao = event.currentTarget || event.target;
       const produtoCard = botao.closest('.produto');
       if (!produtoCard) return;
 
-      const id = produtoCard.dataset.id_produto;
+      const id = produtoCard.dataset.id;
       const preco = Number(produtoCard.dataset.preco);
       const nome = (produtoCard.querySelector('h2')?.textContent || produtoCard.dataset.nome || '').trim();
+
+      console.log(`preco: ${produtoCard.dataset.preco}`);
 
       const itemExistente = carrinho.find(item => item.id === id);
       if (itemExistente) {

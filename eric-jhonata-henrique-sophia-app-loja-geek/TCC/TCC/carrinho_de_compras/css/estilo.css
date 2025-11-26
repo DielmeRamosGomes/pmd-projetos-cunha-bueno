@@ -37,11 +37,13 @@ body {
 .produtos {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(var(--card-min), 1fr));
-  gap: var(--gap);
+  gap: 400px;
 }
 
 /* ===== Card Unitário do Produto ===== */
 .produto {
+  height: 900px;
+  width: 600px;
   background: #fff;
   padding: var(--card-pad);
   /* espaço extra para o botão colado no rodapé */
