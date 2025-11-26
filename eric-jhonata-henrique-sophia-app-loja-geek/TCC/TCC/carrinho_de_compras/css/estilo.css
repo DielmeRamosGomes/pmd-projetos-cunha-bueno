@@ -42,8 +42,8 @@ body {
 
 /* ===== Card Unitário do Produto ===== */
 .produto {
-  height: 900px;
-  width: 600px;
+  height: 400px;
+  width: 400px;
   background: #fff;
   padding: var(--card-pad);
   /* espaço extra para o botão colado no rodapé */
@@ -97,7 +97,7 @@ body {
 
 /* IMAGEM grande e visível no topo */
 .imagem {
-  width: 100%;
+  width: 50%;
   aspect-ratio: 3 / 4;
   /* retrato favorece plushies foi necessário incluir pois as imagens possuiam um padrao de resolução diferentes  */
   height: auto;

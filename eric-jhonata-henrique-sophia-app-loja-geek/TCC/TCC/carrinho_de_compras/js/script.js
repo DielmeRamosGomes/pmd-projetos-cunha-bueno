@@ -1,7 +1,7 @@
 // div produtos
 const produtos = document.querySelector('.produtos');
 
-fetchListarProdutos();
+
 
 let login = 0;
 let ID =
@@ -220,5 +220,5 @@ async function fetchListarProdutos() {
   }
 }
 
-
+fetchListarProdutos();
 
