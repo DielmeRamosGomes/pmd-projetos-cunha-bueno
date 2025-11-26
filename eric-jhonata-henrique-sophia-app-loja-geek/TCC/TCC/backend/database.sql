@@ -119,3 +119,4 @@ call mydatabase.cadastrar_produto("plushie osaka", 200.50, "boneco", "img/osaka.
 update mydatabase.produtos as p set p.urlimagem = "img/osaka.jfif"
     where p.id_produto = 1;
 
+select * from mydatabase.usuarios;
