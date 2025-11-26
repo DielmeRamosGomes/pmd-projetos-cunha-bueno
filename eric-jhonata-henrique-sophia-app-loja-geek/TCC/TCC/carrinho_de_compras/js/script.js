@@ -1,3 +1,7 @@
+// div produtos
+const produtos = document.querySelector('.produtos');
+
+fetchListarProdutos();
 
 let login = 0;
 let ID =
@@ -20,7 +24,7 @@ let ID =
     const fmtBRL = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' });
     const brl = n => fmtBRL.format(Number(n) || 0);
 
-  
+
 
     // ===== Abertura/Fechamento da modal
     function openModal() {
@@ -167,120 +171,50 @@ function atualizarBadgeCarrinho() {
 
 
 //document.getElementById("botao1").disabled = true;
-const respostaId = null;
-
-addEventListener("input", function (event) {
-  event.preventDefault();
-  var nome = document.getElementById("inputnome").value;
-  var conteudoemail = document.getElementById("inputemail").value;
-  var senha = document.getElementById("senha").value;
 
 
-  if (nome && conteudoemail && senha) {
-    document.getElementById("botao1").disabled = false;
-  } else {
-    document.getElementById("botao1").disabled = true;
-  }
-});
 
-const btn = document.querySelector('#btn');
-btn.addEventListener('click', () => {
-  event.preventDefault;
-  const form = document.querySelector('#form');
-  const formData = new FormData(form);
-  const usuario = {
-    nome: formData.get('name'),
-    email: formData.get('email'),
-    senha: formData.get('senha')
-  }
-
-  console.log(usuario);
-
-  fetch('http://localhost:3000/cadastrarusuario', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(usuario)
-  });
-
-  fetchId(usuario.email, usuario.senha);
-
-});
-
-async function fetchId(email, senha) {
-  const login = {
-    email: email,
-    senha: senha
-  }
-
-  try {
-    respostaId = await fetch('http://localhost:3000/listaidusuario', {
-      method: 'POST',
-      headers: {
-        'Content-type': 'application/json'
-      },
-      body: JSON.stringify(login)
-    });
-    if (!respostaId.ok) {
-      const erroData = await respostaId.json(); // Tenta ler o corpo do erro (se houver)
-      throw new Error(`Erro HTTP! Status: ${respostaId.status} - Mensagem: ${erroData.message || 'Desconhecida'}`);
-    }
-
-  } catch (error) {
-    console.log(`Erro: ${error}`);
-    pLivroCadastrado.textContent = `Erro`;
-  }
-
-  console.log(respostaId);
-}
-
-  // div produtos
-const produtos = document.querySelector('.produtos');
 
 async function fetchListarProdutos() {
-  await fetch('http://localhost:3000/listarprodutos')
-    .then(resposta => {
-      if (!resposta.ok) {
-        throw new Error(`Erro de rede: ${resposta.statusText}`);
-      }
-      return resposta.json();
-    })
-    .then(dado => {
-      produtos.innerHTML = ``;
+  try {
+    const resposta = await fetch('http://localhost:3000/listarprodutos');
+    if (!resposta.ok) {
+      throw new Error(`Erro de rede: ${resposta.statusText}`);
+    }
 
-      dado.forEach(produto => {
-        const novoCard = document.createElement('div');
-        novoCard.classList.add('card');
+    const dados = await resposta.json();
+    produtos.innerHTML = ''; // Limpa antes de adicionar
 
-        novoCard.innerHTML = `
-        <div class="produto" data-id="1" data-nome="${dado.nome}" data-preco="200.00">
+    dados.forEach(produto => {
+      const produtoDiv = document.createElement('div');
+      produtoDiv.classList.add('produto');
+      produtoDiv.setAttribute('data-id', produto.id_produto);
+      produtoDiv.setAttribute('data-nome', produto.nome);
+      produtoDiv.setAttribute('data-preco', produto.preco);
+      produtoDiv.innerHTML = `
           <table>
-              <tr>
-                  <td>
-                      <img src="${dado.urlimagem}" class="imagem">
-                  </td>
-                  <td>
-                      <h3>${dado.descricao}</h3>
-                    </td>
-                    <td>
-                        <h2>${dado.nome}</h2>
-                        <p>R$ ${dado.preco}</p>
-                        <button class="adicionar" onclick="new Audio('audio/sata.mp3').play()">Adicionar ao Carrinho</button>
-                    </td>
-                </tr>
-            </table>
-        </div>
-                `;
-        card.appendChild(novoCard);
-        produtos.appendChild(card);
-      });
-    })
-    .catch(error => {
-      console.log(`Houve um problema com a operação fetch: ${error}`);
+            <tr>
+              <td>
+                <img src="${produto.urlimagem}" alt="${produto.nome}" class="imagem">
+              </td>
+              <td>
+                <h3>${produto.descricao}</h3>
+              </td>
+              <td>
+                <h2>${produto.nome}</h2>
+                <p>R$ ${produto.preco}</p>
+                <button class="adicionar" onclick="new Audio('audio/sata.mp3').play()">Adicionar ao Carrinho</button>
+              </td>
+            </tr>
+          </table>
+      `;
+
+      produtos.appendChild(produtoDiv);
     });
+  } catch (error) {
+    console.error(`Houve um problema com a operação fetch: ${error}`);
+  }
 }
 
-fetchListarProdutos();
 
 
