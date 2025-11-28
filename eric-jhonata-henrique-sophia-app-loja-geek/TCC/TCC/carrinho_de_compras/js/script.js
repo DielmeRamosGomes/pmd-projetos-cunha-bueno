@@ -1,7 +1,10 @@
 // div produtos
 const produtos = document.querySelector('.produtos');
 
-
+const botoesAdicionar = document.querySelectorAll('.adicionar');
+botoesAdicionar.addEventListener('click', () => {
+  console.log("hhhhhhhhhhhhhhhhhhhhhhhh");
+});
 
 let login = 0;
 let ID =
@@ -31,6 +34,7 @@ let ID =
     function openModal() {
       if (!modal) return;
       modal.classList.add('is-open');
+      document.
       document.body.style.overflow = 'hidden';
       modal.querySelector('.modal__close')?.focus();
     }
@@ -196,6 +200,7 @@ async function fetchListarProdutos() {
       produtoDiv.setAttribute('data-nome', produto.nome);
       produtoDiv.setAttribute('data-preco', produto.preco);
       produtoDiv.innerHTML = `
+     
           <table>
             <tr>
               <td>
@@ -207,10 +212,11 @@ async function fetchListarProdutos() {
               <td>
                 <h2>${produto.nome}</h2>
                 <p>R$ ${produto.preco}</p>
-                <button class="adicionar" onclick="new Audio('audio/sata.mp3').play()">Adicionar ao Carrinho</button>
+                 <button class="adicionar" onclick="new Audio('audio/sata.mp3').play()">Adicionar ao Carrinho</button>
               </td>
             </tr>
           </table>
+         
       `;
 
       produtos.appendChild(produtoDiv);
