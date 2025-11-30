@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const totalElemento = document.querySelector('.total span');
   const botaoFinalizar = document.querySelector('.finalizar');
   const produtosContainer = document.querySelector('.produtos');
-
+  const produtoDiv = document.createElement('div');
   // ===== Modal / botão flutuante
   const modal = document.getElementById('cartModal');
   const openBtn = document.getElementById('openCart');
@@ -58,12 +58,13 @@ document.addEventListener('DOMContentLoaded', () => {
     new Audio('audio/sata.mp3').play(); // toca som ao adicionar
 
     const botao = event.currentTarget || event.target;
-    const produtoCard = botao.closest('.produto');
-    if (!produtoCard) return;
+    
+    if (!produtoDiv)
+      return;
 
-    const id = produtoCard.dataset.id;
-    const preco = Number(produtoCard.dataset.preco);
-    const nome = (produtoCard.querySelector('h2')?.textContent || produtoCard.dataset.nome || '').trim();
+    const id = produtoDiv.dataset.id;
+    const preco = Number(produtoDiv.dataset.preco);
+    const nome = (produtoDiv.querySelector('h2')?.textContent || produtoDiv.dataset.nome || '').trim();
 
     const itemExistente = carrinho.find(item => item.id === id);
     if (itemExistente) {
@@ -71,8 +72,8 @@ document.addEventListener('DOMContentLoaded', () => {
     } else {
       carrinho.push({ id, nome, preco, quantidade: 1 });
     }
-
     atualizarCarrinho();
+    console.log(`Carrinho: ${JSON.stringify(carrinho)}`);
   }
 
   function atualizarCarrinho() {
