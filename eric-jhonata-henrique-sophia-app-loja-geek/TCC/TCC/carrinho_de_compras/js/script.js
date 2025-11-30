@@ -1,7 +1,6 @@
-// div produtos
+//import { id } from './login.js';
 
-
-let login = 0;
+let login = 0; // variável global para controlar o login
 
 document.addEventListener('DOMContentLoaded', () => {
   // ===== Seletores base
@@ -121,7 +120,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function finalizarCompra() {
-    if (login !== 1) {
+    if (login === 0) {
       alert('Você tem que se cadastrar primeiro!');
       return;
     }

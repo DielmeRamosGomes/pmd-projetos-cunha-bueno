@@ -1,4 +1,4 @@
-const respostaId = null;
+let respostaId = null;
 
 addEventListener("input", function (event) {
   event.preventDefault();
@@ -6,12 +6,12 @@ addEventListener("input", function (event) {
   var conteudoemail = document.getElementById("inputemail").value;
   var senha = document.getElementById("senha").value;
 
-/*
-  if (nome && conteudoemail && senha) {
-    document.getElementById("botao1").disabled = false;
-  } else {
-    document.getElementById("botao1").disabled = true;
-  }*/
+  /*
+    if (nome && conteudoemail && senha) {
+      document.getElementById("botao1").disabled = false;
+    } else {
+      document.getElementById("botao1").disabled = true;
+    }*/
 });
 
 const btn = document.querySelector('#btn');
@@ -57,11 +57,11 @@ async function fetchId(email, senha) {
       const erroData = await respostaId.json(); // Tenta ler o corpo do erro (se houver)
       throw new Error(`Erro HTTP! Status: ${respostaId.status} - Mensagem: ${erroData.message || 'Desconhecida'}`);
     }
+    const dados = await respostaId.json();
+    console.log(dados);
+    alert(`Login realizado com sucesso! Seu ID é: ${dados[0][0].id}`);
 
   } catch (error) {
     console.log(`Erro: ${error}`);
-    pLivroCadastrado.textContent = `Erro`;
   }
-
-  console.log(respostaId);
 }
