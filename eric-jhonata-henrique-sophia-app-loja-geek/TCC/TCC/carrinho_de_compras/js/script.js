@@ -1,15 +1,14 @@
 //import { id } from './login.js';
 
 let login = 0; // variável global para controlar o login
+const produtosContainer = document.querySelector('.produtos');
 
 document.addEventListener('DOMContentLoaded', () => {
   // ===== Seletores base
-
-  const botoesAdicionar = document.querySelectorAll('.adicionar');
   const listaCarrinho = document.querySelector('.itens-carrinho');
   const totalElemento = document.querySelector('.total span');
   const botaoFinalizar = document.querySelector('.finalizar');
-
+  
   // ===== Modal / botão flutuante
   const modal = document.getElementById('cartModal'); // <div id="cartModal" ...>
   const openBtn = document.getElementById('openCart');  // botão/ícone do carrinho
@@ -43,20 +42,20 @@ document.addEventListener('DOMContentLoaded', () => {
     if (e.key === 'Escape' && modal?.classList.contains('is-open')) closeModal();
   });
 
-  // ===== Listeners dos produtos
-  botoesAdicionar.forEach(botao => {
-    console.log(`Testando botão adicionar ao carrinho`);
-    botao.addEventListener('click', adicionarAoCarrinho);
+  // ===== Delegação de eventos para produtos
+
+  produtosContainer?.addEventListener('click', (e) => {
+    if (e.target.classList.contains('adicionar')) {
+      adicionarAoCarrinho(e);
+    }
   });
 
   botaoFinalizar?.addEventListener('click', () => {
     finalizarCompra();
-
   });
 
   // ===== Lógica do carrinho
   function adicionarAoCarrinho(event) {
-    console.log("hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh");
     const botao = event.currentTarget || event.target;
     const produtoCard = botao.closest('.produto');
     if (!produtoCard) return;
@@ -64,8 +63,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const id = produtoCard.dataset.id;
     const preco = Number(produtoCard.dataset.preco);
     const nome = (produtoCard.querySelector('h2')?.textContent || produtoCard.dataset.nome || '').trim();
-
-    console.log(`preco: ${produtoCard.dataset.preco}`);
 
     const itemExistente = carrinho.find(item => item.id === id);
     if (itemExistente) {
@@ -78,76 +75,34 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function atualizarCarrinho() {
-    if (!listaCarrinho || !totalElemento) return;
-
     listaCarrinho.innerHTML = '';
     let total = 0;
 
     carrinho.forEach(item => {
       const li = document.createElement('li');
-      const subtotal = item.preco * item.quantidade;
-      total += subtotal;
-
-      li.innerHTML = `
-        <span>${item.nome} x ${item.quantidade}</span>
-        <span>${brl(subtotal)}</span>
-        <button class="remover" data-id="${item.id}" aria-label="Remover ${item.nome}">×</button>
-      `;
-
+      li.textContent = `${item.nome} x${item.quantidade} — ${brl(item.preco * item.quantidade)}`;
       listaCarrinho.appendChild(li);
+
+      total += item.preco * item.quantidade;
     });
 
     totalElemento.textContent = brl(total);
-
-    // liga remover
-    listaCarrinho.querySelectorAll('.remover').forEach(b => {
-      b.addEventListener('click', removerDoCarrinho);
-    });
-
-    // atualiza badge do ícone
-    atualizarBadgeCarrinho();
-  }
-
-  function removerDoCarrinho(event) {
-    const id = event.currentTarget.getAttribute('data-id');
-
-    carrinho = carrinho.flatMap(item => {
-      if (item.id !== id) return [item];
-      if (item.quantidade > 1) return [{ ...item, quantidade: item.quantidade - 1 }];
-      return [];
-    });
-
-    atualizarCarrinho();
   }
 
   function finalizarCompra() {
-    if (login === 0) {
-      alert('Você tem que se cadastrar primeiro!');
-      return;
-    }
     if (carrinho.length === 0) {
       alert('Seu carrinho está vazio!');
       return;
     }
-    const total = carrinho.reduce((acc, it) => acc + it.preco * it.quantidade, 0);
-    alert(`Compra finalizada! Total: ${brl(total)}`);
+
+    alert('Compra finalizada com sucesso!');
     carrinho = [];
     atualizarCarrinho();
-    // fecha a modal depois de finalizar
     closeModal();
   }
 
-  // ===== Badge no ícone (mostra total de itens)
-  function atualizarBadgeCarrinho() {
-    if (!openBtn) return;
-    const qnt = carrinho.reduce((acc, it) => acc + (it.quantidade || 0), 0);
-    if (qnt > 0) openBtn.setAttribute('data-count', qnt);
-    else openBtn.removeAttribute('data-count');
-  }
-
-  const produtos = document.querySelector('.produtos');
-
-  async function fetchListarProdutos() {
+});
+async function fetchListarProdutos() {
     try {
       const resposta = await fetch('http://localhost:3000/listarprodutos');
       if (!resposta.ok) {
@@ -155,7 +110,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       const dados = await resposta.json();
-      produtos.innerHTML = ''; // Limpa antes de adicionar
+      produtosContainer.innerHTML = ''; // Limpa antes de adicionar
 
       dados.forEach(produto => {
         const produtoDiv = document.createElement('div');
@@ -183,15 +138,14 @@ document.addEventListener('DOMContentLoaded', () => {
          
       `;
 
-        produtos.appendChild(produtoDiv);
+        produtosContainer.appendChild(produtoDiv);
       });
     } catch (error) {
       console.error(`Houve um problema com a operação fetch: ${error}`);
     }
   }
 
-  fetchListarProdutos();
-});
+fetchListarProdutos();
 
 // ===== utilitários globais 
 function play() {
@@ -213,10 +167,11 @@ function atualizarBadgeCarrinho() {
   }
 }
 
-//------------------------------------------------------------//
 
 
-//document.getElementById("botao1").disabled = true;
+
+
+
 
 
 
