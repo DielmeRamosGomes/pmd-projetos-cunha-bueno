@@ -38,13 +38,12 @@ body {
 .produtos {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(var(--card-min), 1fr));
-  gap: 400px;
 }
 
 /* ===== Card Unitário do Produto ===== */
 .produto {
-  height: 400px;
-  width: 400px;
+  height: 500px;
+  width: 300px;
   background: #fff;
   padding: var(--card-pad);
   /* espaço extra para o botão colado no rodapé */
@@ -79,26 +78,13 @@ body {
   padding: 0;
 }
 
-/* ordem dos 3 tds originais */
-.produto td:nth-child(1) {
-  order: 0;
-}
 
-/* imagem */
-.produto td:nth-child(3) {
-  order: 1;
-}
-
-/* descrição (h3)) */
-.produto td:nth-child(2) {
-  order: 2;
-}
 
 /* Valor + Adição ao Carrinho */
 
 /* IMAGEM grande e visível no topo */
 .imagem {
-  width: 50%;
+  width: 100%;
   aspect-ratio: 3 / 4;
   /* retrato favorece plushies foi necessário incluir pois as imagens possuiam um padrao de resolução diferentes  */
   height: auto;
