@@ -1,17 +1,17 @@
 //import { id } from './login.js';
 
 let login = 0; // variável global para controlar o login
-const produtosContainer = document.querySelector('.produtos');
 
 document.addEventListener('DOMContentLoaded', () => {
   // ===== Seletores base
   const listaCarrinho = document.querySelector('.itens-carrinho');
   const totalElemento = document.querySelector('.total span');
   const botaoFinalizar = document.querySelector('.finalizar');
-  
+  const produtosContainer = document.querySelector('.produtos');
+
   // ===== Modal / botão flutuante
-  const modal = document.getElementById('cartModal'); // <div id="cartModal" ...>
-  const openBtn = document.getElementById('openCart');  // botão/ícone do carrinho
+  const modal = document.getElementById('cartModal');
+  const openBtn = document.getElementById('openCart');
 
   // Estado
   let carrinho = [];
@@ -43,7 +43,6 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // ===== Delegação de eventos para produtos
-
   produtosContainer?.addEventListener('click', (e) => {
     if (e.target.classList.contains('adicionar')) {
       adicionarAoCarrinho(e);
@@ -56,6 +55,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // ===== Lógica do carrinho
   function adicionarAoCarrinho(event) {
+    new Audio('audio/sata.mp3').play(); // toca som ao adicionar
+
     const botao = event.currentTarget || event.target;
     const produtoCard = botao.closest('.produto');
     if (!produtoCard) return;
@@ -81,12 +82,25 @@ document.addEventListener('DOMContentLoaded', () => {
     carrinho.forEach(item => {
       const li = document.createElement('li');
       li.textContent = `${item.nome} x${item.quantidade} — ${brl(item.preco * item.quantidade)}`;
+
+      // Botão de remover
+      const btnRemover = document.createElement('button');
+      btnRemover.textContent = '❌';
+      btnRemover.classList.add('remover');
+      btnRemover.addEventListener('click', () => removerItem(item.id));
+
+      li.appendChild(btnRemover);
       listaCarrinho.appendChild(li);
 
       total += item.preco * item.quantidade;
     });
 
     totalElemento.textContent = brl(total);
+  }
+
+  function removerItem(id) {
+    carrinho = carrinho.filter(item => item.id !== id);
+    atualizarCarrinho();
   }
 
   function finalizarCompra() {
@@ -101,8 +115,8 @@ document.addEventListener('DOMContentLoaded', () => {
     closeModal();
   }
 
-});
-async function fetchListarProdutos() {
+  // ===== Fetch dos produtos
+  async function fetchListarProdutos() {
     try {
       const resposta = await fetch('http://localhost:3000/listarprodutos');
       if (!resposta.ok) {
@@ -119,7 +133,6 @@ async function fetchListarProdutos() {
         produtoDiv.setAttribute('data-nome', produto.nome);
         produtoDiv.setAttribute('data-preco', produto.preco);
         produtoDiv.innerHTML = `
-     
           <table>
             <tr>
               <td>
@@ -131,13 +144,11 @@ async function fetchListarProdutos() {
               <td>
                 <h2>${produto.nome}</h2>
                 <p>R$ ${produto.preco}</p>
-                 <button class="adicionar" onclick="new Audio('audio/sata.mp3').play()">Adicionar ao Carrinho</button>
+                <button class="adicionar">Adicionar ao Carrinho</button>
               </td>
             </tr>
           </table>
-         
-      `;
-
+        `;
         produtosContainer.appendChild(produtoDiv);
       });
     } catch (error) {
@@ -145,16 +156,9 @@ async function fetchListarProdutos() {
     }
   }
 
-fetchListarProdutos();
+  fetchListarProdutos();
+});
 
-// ===== utilitários globais 
-function play() {
-  new Audio('audio/sata.mp3').play();
-}
-function permitido() {
-  // chame isto quando o usuário concluir o cadastro/login
-  login = 1;
-}
 
 function atualizarBadgeCarrinho() {
   const btn = document.getElementById('openCart');

@@ -42,7 +42,7 @@ body {
 
 /* ===== Card Unitário do Produto ===== */
 .produto {
-  height: 500px;
+  height: 550px;
   width: 300px;
   background: #fff;
   padding: var(--card-pad);
