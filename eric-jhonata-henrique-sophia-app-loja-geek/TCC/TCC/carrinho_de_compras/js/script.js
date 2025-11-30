@@ -45,6 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // ===== Listeners dos produtos
   botoesAdicionar.forEach(botao => {
+    console.log(`Testando botão adicionar ao carrinho`);
     botao.addEventListener('click', adicionarAoCarrinho);
   });
 
