@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const totalElemento = document.querySelector('.total span');
   const botaoFinalizar = document.querySelector('.finalizar');
   const produtosContainer = document.querySelector('.produtos');
-  const produtoDiv = document.createElement('div');
+
   // ===== Modal / botão flutuante
   const modal = document.getElementById('cartModal');
   const openBtn = document.getElementById('openCart');
@@ -49,22 +49,19 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  botaoFinalizar?.addEventListener('click', () => {
-    finalizarCompra();
-  });
+  botaoFinalizar?.addEventListener('click', finalizarCompra);
 
   // ===== Lógica do carrinho
   function adicionarAoCarrinho(event) {
-    new Audio('audio/sata.mp3').play(); // toca som ao adicionar
+    new Audio('audio/sata.mp3').play(); // som ao adicionar
 
-    const botao = event.currentTarget || event.target;
-    
-    if (!produtoDiv)
-      return;
+    const botao = event.target;
+    const produtoCard = botao.closest('.produto');
+    if (!produtoCard) return;
 
-    const id = produtoDiv.dataset.id;
-    const preco = Number(produtoDiv.dataset.preco);
-    const nome = (produtoDiv.querySelector('h2')?.textContent || produtoDiv.dataset.nome || '').trim();
+    const id = produtoCard.dataset.id;
+    const preco = Number(produtoCard.dataset.preco);
+    const nome = produtoCard.dataset.nome;
 
     const itemExistente = carrinho.find(item => item.id === id);
     if (itemExistente) {
@@ -72,8 +69,8 @@ document.addEventListener('DOMContentLoaded', () => {
     } else {
       carrinho.push({ id, nome, preco, quantidade: 1 });
     }
+
     atualizarCarrinho();
-    console.log(`Carrinho: ${JSON.stringify(carrinho)}`);
   }
 
   function atualizarCarrinho() {
@@ -87,7 +84,6 @@ document.addEventListener('DOMContentLoaded', () => {
       // Botão de remover
       const btnRemover = document.createElement('button');
       btnRemover.textContent = '❌';
-      btnRemover.classList.add('remover');
       btnRemover.addEventListener('click', () => removerItem(item.id));
 
       li.appendChild(btnRemover);
@@ -109,7 +105,6 @@ document.addEventListener('DOMContentLoaded', () => {
       alert('Seu carrinho está vazio!');
       return;
     }
-
     alert('Compra finalizada com sucesso!');
     carrinho = [];
     atualizarCarrinho();
@@ -120,28 +115,23 @@ document.addEventListener('DOMContentLoaded', () => {
   async function fetchListarProdutos() {
     try {
       const resposta = await fetch('http://localhost:3000/listarprodutos');
-      if (!resposta.ok) {
-        throw new Error(`Erro de rede: ${resposta.statusText}`);
-      }
+      if (!resposta.ok) throw new Error(`Erro de rede: ${resposta.statusText}`);
 
       const dados = await resposta.json();
-      produtosContainer.innerHTML = ''; // Limpa antes de adicionar
+      produtosContainer.innerHTML = '';
 
       dados.forEach(produto => {
         const produtoDiv = document.createElement('div');
         produtoDiv.classList.add('produto');
-        produtoDiv.setAttribute('data-id', produto.id_produto);
-        produtoDiv.setAttribute('data-nome', produto.nome);
-        produtoDiv.setAttribute('data-preco', produto.preco);
+        produtoDiv.dataset.id = produto.id_produto;
+        produtoDiv.dataset.nome = produto.nome;
+        produtoDiv.dataset.preco = produto.preco;
+
         produtoDiv.innerHTML = `
           <table>
             <tr>
-              <td>
-                <img src="${produto.urlimagem}" alt="${produto.nome}" class="imagem">
-              </td>
-              <td>
-                <h3>${produto.descricao}</h3>
-              </td>
+              <td><img src="${produto.urlimagem}" alt="${produto.nome}" class="imagem"></td>
+              <td><h3>${produto.descricao}</h3></td>
               <td>
                 <h2>${produto.nome}</h2>
                 <p>R$ ${produto.preco}</p>
@@ -153,7 +143,7 @@ document.addEventListener('DOMContentLoaded', () => {
         produtosContainer.appendChild(produtoDiv);
       });
     } catch (error) {
-      console.error(`Houve um problema com a operação fetch: ${error}`);
+      console.error(`Erro no fetch: ${error}`);
     }
   }
 
