@@ -130,7 +130,7 @@ call mydatabase.cadastrar_produto("plushie chiyo", 79.90, "pirralhinha", "img/ch
 call mydatabase.cadastrar_produto("plushie tomo", 200.50, "barraqueira", "img/tomo.jpg");
 
 
-
+call mydatabase.cadastrar_produto("plushie neko ark", 200.50, "furry", "img/NecoPlush.jpg");
 update mydatabase.produtos as p set p.urlimagem = "img/chiyochan.jpg"
     where p.id_produto = 2;
 
