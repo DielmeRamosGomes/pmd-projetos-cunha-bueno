@@ -114,26 +114,40 @@ end;
 
 select * from mydatabase.produtos;
 
-call mydatabase.cadastrar_produto("plushie osaka", 200.50, "boneco", "img/osaka.jfif");
+call mydatabase.cadastrar_produto("Osaka", 300, "GREATEST OF ALL TIME", "img/osaka.jpg");
 
 update mydatabase.produtos as p set p.urlimagem = "img/osaka.jfif"
     where p.id_produto = 1;
 
 select * from mydatabase.usuarios;
 
-call mydatabase.cadastrar_produto("plushie sakaki", 400, "Essa é a Sakaki, a menina quieta que é considerada a mais legal da escola, Mas por dentro ela é um amor de pessoa que ama animais. Esse plushie feito de algodão tem 25 centimetros de altura e tem altissima qualidade.", "img/sakaki.jfif");
 
+call mydatabase.cadastrar_produto("Pelucia da Chiyo", 250, "Chiyo-chan de Azumanga Daioh (pirralha), pelucia 18cm x 16cm", "img/chiyochan.jpg");
 
-
-call mydatabase.cadastrar_produto("plushie chiyo", 79.90, "pirralhinha", "img/chiyochan.jpg");
-
-call mydatabase.cadastrar_produto("plushie tomo", 200.50, "barraqueira", "img/tomo.jpg");
-
-
-call mydatabase.cadastrar_produto("plushie neko ark", 200.50, "furry", "img/NecoPlush.jpg");
+call mydatabase.cadastrar_produto("pelucia Neco Arc", 100, "Arcueid Brunestud de Tsukihime, pelucia 20cm x 18cm", "img/Neko Arc.jpg");
 update mydatabase.produtos as p set p.urlimagem = "img/chiyochan.jpg"
     where p.id_produto = 2;
+call mydatabase.cadastrar_produto("Pelucia da Hatsune Miku", 150, "Hatsune Miku cantora virtual, Vocaloid, pelucia 30cm x 20cm", "img/hatsune miku.jpg");
 
-    
-call mydatabase.cadastrar_produto("plushie yomi", 200.50, "Essa é a Yomi, a Yomi é a melhor amiga da Tomo ela gostando ou não, ela é a mais matura do grupo, sempre tentando impor ordem no grupo quando se metem em encrencas. Ela estuda junto da tomo desde os anos primarios. A Yomi esta sempre tentando fazer uma dieta mas sempre falha. Esse plushie mede 21 cm e pesa um pouco mais que os outros por motivos desconhecidos", "img/yomi.jfif");
+call mydatabase.cadastrar_produto("Pelucia do Caine", 93, "Caine de The Amazing Digital Circus, pelucia 30cm x 25cm", "img/Caine.jpg");
 
+call mydatabase.cadastrar_produto("Pelucia da Kuromi", 65, "Kuromi personagem da Sanrio, pelucia 30cm x 20cm", "img/Kuromi.jpg");
+
+call mydatabase.cadastrar_produto("Pelucia do Broly", 190, "Broly de Dragon Ball, pelucia 55cm x 28cm", "img/Brolly Plush.avif");
+
+call mydatabase.cadastrar_produto("Pelucia do Goku", 50, "Goku de Dragon Ball, pelucia 25cm x 18cm", "img/Goku.jpg");
+
+call mydatabase.cadastrar_produto("Pelucia do Luffy", 150, "Luffy de One Piece, pelucia 25cm x 18cm", "img/luffy2.jpg"); 
+
+call mydatabase.cadastrar_produto("Pelucia do Luffy Gear 5", 170, "Luffy de One Piece, pelucia 25cm x 18cm", "img/luffyG5.jpg"); 
+
+call mydatabase.cadastrar_produto("Pelucia do Sanji", 150, "Sanji de One Piece, pelucia 25cm x 18cm", "img/Sanji.jpg"); 
+
+call mydatabase.cadastrar_produto("Pelucia do Bruxo", 250, "sale fulbito?, pelucia 25cm x 18cm", "img/O bruxo.jpg"); 
+
+delete from mydatabase.produtos
+where nome = "Pelucia do Zoro";
+
+update mydatabase.produtos 
+set descricao = "ballz";
+where nome = "Pelucia do Caine";
