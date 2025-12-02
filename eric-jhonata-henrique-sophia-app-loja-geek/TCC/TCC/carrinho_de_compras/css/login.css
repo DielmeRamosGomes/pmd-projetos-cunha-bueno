@@ -1,0 +1,37 @@
+
+body {
+  font-family: Arial, sans-serif;
+  font-size:35px;
+  margin: 0;
+  padding: 20px;
+  background: url('../img/ceu.jpg') no-repeat fixed center / cover;
+}
+    .container {
+      background: linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(100, 0, 255, 0.7));
+      margin: 35px auto;
+      padding: 20px;
+      max-width: 700px;
+      border-radius: 14px;
+      box-shadow: 0 0 17px 7px rgba(255, 0, 255, 0.5);
+      text-align: center;
+      animation: pulse 3s infinite ease-in-out;
+    }
+
+    
+    button {
+      background: linear-gradient(90deg, #ff00ff, #00ffff);
+      color: white;
+      padding: 10px 24px;
+      font-size: 13px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      margin-top: 14px;
+      box-shadow: 0 0 10px #00ffff;
+      transition: 0.3s ease-in-out;
+    }
+
+    button:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 20px #ff00ff;
+    }
